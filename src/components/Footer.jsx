@@ -1,0 +1,118 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { scroller } from "react-scroll";
+import { useState, useRef } from "react";
+import { motion, useInView } from "motion/react";
+
+export default function Footer() {
+  const [_menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const footerRef = useRef(null);
+  const contentRef = useRef(null);
+
+  const footerInView = useInView(footerRef, { once: false, amount: 0.3 });
+  const contentInView = useInView(contentRef, { once: false, amount: 0.3 });
+
+  const handleNavigate = (section) => {
+    if (location.pathname === "/") {
+      scroller.scrollTo(section, {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    } else {
+      navigate(`/?section=${section}`);
+    }
+    setMenuOpen(false);
+  };
+
+  return (
+    <footer className="bg-[#2F2FA2] text-[#C0E57C] px-6 sm:px-10 md:px-16 py-16">
+      {/* Animasi box utama footer */}
+      <motion.div
+        ref={footerRef}
+        initial={{ y: 50, opacity: 0 }}
+        animate={footerInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-7xl mx-auto"
+      >
+        {/* Konten footer dengan animasi fade dari putih */}
+        <motion.div
+          ref={contentRef}
+          initial={{ opacity: 0, color: "#ffffff" }}
+          animate={
+            contentInView
+              ? { opacity: 1, color: "#C0E57C" }
+              : { opacity: 0, color: "#ffffff" }
+          }
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
+            {/* Kiri */}
+            <div>
+              <div className="mb-6">
+                <h4 className="text-sm tracking-widest mb-2">
+                  SAY HELLO
+                </h4>
+                <a
+                  href="mailto:putriayundagustiara@gmail.com"
+                  className="text-lg font-medium hover:text-white"
+                >
+                  putriayundagustiara@gmail.com
+                </a>
+                <br />
+                <a
+                  href="https://t.me/putriayundaa"
+                  className="text-lg font-medium hover:text-white"
+                >
+                  t.me/putriayundaa
+                </a>
+              </div>
+            </div>
+
+            {/* Kanan */}
+            <div className="flex flex-col gap-3 sm:items-end">
+              {[
+                { label: "My Home", section: "home" },
+                { label: "My ToolBox", section: "toolbox" },
+                { label: "My Résumé", section: "resume" },
+              ].map((item, idx) => (
+                <motion.button
+                  key={idx}
+                  onClick={() => handleNavigate(item.section)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={
+                    contentInView
+                      ? { opacity: 1, y: 0 }
+                      : { opacity: 0, y: 20 }
+                  }
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.2 * idx,
+                  }}
+                  className="group relative inline-flex w-fit text-lg font-medium transition-colors duration-300 hover:text-[#f4ffd1]"
+                >
+                  <span className="relative z-10 px-1">{item.label}</span>
+                  <span className="absolute inset-0 bg-white/10 rounded-sm opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+                </motion.button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t border-[#C0E57C]/50 my-6"></div>
+
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+            <p className="text-sm">&copy; My Portofolio 2025</p>
+            <div className="flex gap-6 text-15px font-medium">
+              <a href="#" className="hover:text-white" target="_blank" rel="noopener noreferrer">TW</a>
+              <a href="https://github.com/PutriAyunda11" className="hover:text-white" target="_blank" rel="noopener noreferrer">GH</a>
+              <a href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331" className="hover:text-white" target="_blank" rel="noopener noreferrer">LN</a>
+              <a href="https://www.instagram.com/pppp_yyygstrr/" className="hover:text-white" target="_blank" rel="noopener noreferrer">IG</a>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </footer>
+  );
+}

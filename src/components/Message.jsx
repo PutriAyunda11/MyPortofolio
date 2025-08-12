@@ -1,0 +1,118 @@
+import { useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { motion } from "motion/react";
+
+export default function KontakForm() {
+  const form = useRef();
+  const [sent, setSent] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_4thw9wf", // Service ID
+        "template_hkkmei9", // Template ID
+        form.current,
+        "zMbEIiv-EgL7m12FO" // Public Key
+      )
+      .then(
+        (result) => {
+          console.log("Message sent: ", result.text);
+          setSent(true);
+        },
+        (error) => {
+          console.error("Failed to send: ", error.text);
+        }
+      );
+  };
+
+  return (
+    <section className="min-h-screen flex flex-col justify-center items-center px-6 py-12 bg-white">
+      <motion.h2
+        className="text-3xl md:text-4xl font-bold text-purple-700 text-center mb-4 mt-10"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
+        Send Your Message!
+      </motion.h2>
+
+      <motion.p
+        className="text-center text-gray-600 mb-10 text-lg max-w-xl pb-6"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+      >
+       Got questions, collaboration ideas, or just want to say hi? Please fill out the form below.
+      </motion.p>
+
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6 "
+      >
+        <div className="flex flex-col">
+          <label className="text-sm text-gray-500 mb-1">Your Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            className="border-b-2 border-gray-300 focus:outline-none focus:border-purple-600 py-2"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-sm text-gray-500 mb-1">Your Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            className="border-b-2 border-gray-300 focus:outline-none focus:border-purple-600 py-2"
+          />
+        </div>
+
+        <div className="md:col-span-2 flex flex-col">
+          <label className="text-sm text-gray-500 mb-1">Message</label>
+          <textarea
+            rows="4"
+            name="message"
+            placeholder="Type your message here..."
+            className="border-b-2 border-gray-300 focus:outline-none focus:border-purple-600 py-2"
+          ></textarea>
+        </div>
+
+        <div className="md:col-span-2 flex justify-center mt-10">
+          <button
+            type="submit"
+            className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-10 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
+          >
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              SEND
+            </span>
+            <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
+
+            <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full transition-all duration-500 ease-in-out z-0"></span>
+          </button>
+        </div>
+      </form>
+
+      {sent && (
+        <div className="fixed top-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-4 rounded-lg shadow-xl z-50 w-[300px]">
+          <div className="flex justify-between items-center ">
+            <p className="text-lg">Your message has been sent successfully!</p>
+            <button
+              onClick={() => setSent(false)}
+              className="ml-4 text-white hover:text-gray-200 font-bold text-lg leading-none"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}

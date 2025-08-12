@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.rounded-b-full {
+  border-bottom-left-radius: 9980px;
+  border-bottom-right-radius: 9980px;
+}
+
