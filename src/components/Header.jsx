@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link as ScrollLink, scroller } from "react-scroll";
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

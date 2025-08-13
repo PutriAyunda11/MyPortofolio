@@ -5,3 +5,27 @@
   border-bottom-right-radius: 9980px;
 }
 
+/* Tambahkan di file CSS global */
+.scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #527fc7 transparent; /* biru Tailwind */
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #5895f7;
+  border-radius: 9999px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #5895f7;
+}
+
+

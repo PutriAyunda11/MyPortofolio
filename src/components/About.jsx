@@ -45,7 +45,7 @@ export default function About() {
             View my CV/RESUME to learn more about my experience and skills.
           </motion.p>
 
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 20 }}
             animate={leftInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
@@ -61,7 +61,7 @@ export default function About() {
               <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
               <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full transition-all duration-500 ease-in-out z-0"></span>
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Right Card */}
@@ -95,7 +95,7 @@ export default function About() {
             I’m open to discussions, collaborations, or just saying hello.
           </motion.p>
 
-          <motion.div
+          <div
             initial={{ opacity: 0, y: 20 }}
             animate={rightInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
@@ -111,7 +111,7 @@ export default function About() {
               <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
               <span className="absolute left-0 top-0 h-full w-0 bg-[#4b22d1] group-hover:w-full transition-all duration-500 ease-in-out z-0"></span>
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
