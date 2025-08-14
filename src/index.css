@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* penting agar header tidak melebar */
+}
+
 .rounded-b-full {
   border-bottom-left-radius: 9980px;
   border-bottom-right-radius: 9980px;
