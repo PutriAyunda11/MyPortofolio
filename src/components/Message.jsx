@@ -7,26 +7,39 @@ export default function KontakForm() {
   const form = useRef();
   const [sent, setSent] = useState(false);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+const sendEmail = (e) => {
+  e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_4thw9wf", // Service ID
-        "template_hkkmei9", // Template ID
-        form.current,
-        "zMbEIiv-EgL7m12FO" // Public Key
-      )
-      .then(
-        (result) => {
-          console.log("Message sent: ", result.text);
-          setSent(true);
-        },
-        (error) => {
-          console.error("Failed to send: ", error.text);
-        }
-      );
-  };
+  // Ambil value dari input
+  const name = form.current.name.value.trim();
+  const email = form.current.email.value.trim();
+  const message = form.current.message.value.trim();
+
+  // Validasi: cek kalau kosong
+  if (!name || !email || !message) {
+    alert("Please fill in all fields before sending!");
+    return; // keluar dari fungsi
+  }
+
+  emailjs
+    .sendForm(
+      "service_4thw9wf",
+      "template_hkkmei9",
+      form.current,
+      "zMbEIiv-EgL7m12FO"
+    )
+    .then(
+      (result) => {
+        console.log("Message sent: ", result.text);
+        setSent(true);
+        form.current.reset(); // reset form setelah sukses
+      },
+      (error) => {
+        console.error("Failed to send: ", error.text);
+        alert("Failed to send your message. Please try again.");
+      }
+    );
+};
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center px-6 py-12 bg-white">
