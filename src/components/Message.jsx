@@ -6,40 +6,42 @@ import { motion } from "motion/react";
 export default function KontakForm() {
   const form = useRef();
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(""); // state untuk error message
 
-const sendEmail = (e) => {
-  e.preventDefault();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  // Ambil value dari input
-  const name = form.current.name.value.trim();
-  const email = form.current.email.value.trim();
-  const message = form.current.message.value.trim();
+    // Ambil value dari input
+    const name = form.current.name.value.trim();
+    const email = form.current.email.value.trim();
+    const message = form.current.message.value.trim();
 
-  // Validasi: cek kalau kosong
-  if (!name || !email || !message) {
-    alert("Please fill in all fields before sending!");
-    return; // keluar dari fungsi
-  }
+    // Validasi: cek kalau kosong
+    if (!name || !email || !message) {
+      setError("Please fill in all fields before sending!");
+      return;
+    }
 
-  emailjs
-    .sendForm(
-      "service_4thw9wf",
-      "template_hkkmei9",
-      form.current,
-      "zMbEIiv-EgL7m12FO"
-    )
-    .then(
-      (result) => {
-        console.log("Message sent: ", result.text);
-        setSent(true);
-        form.current.reset(); // reset form setelah sukses
-      },
-      (error) => {
-        console.error("Failed to send: ", error.text);
-        alert("Failed to send your message. Please try again.");
-      }
-    );
-};
+    emailjs
+      .sendForm(
+        "service_4thw9wf",
+        "template_hkkmei9",
+        form.current,
+        "zMbEIiv-EgL7m12FO"
+      )
+      .then(
+        (result) => {
+          console.log("Message sent: ", result.text);
+          setSent(true);
+          setError(""); // hilangkan error kalau berhasil
+          form.current.reset(); // reset form setelah sukses
+        },
+        (error) => {
+          console.error("Failed to send: ", error.text);
+          setError("Failed to send your message. Please try again.");
+        }
+      );
+  };
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center px-6 py-12 bg-white">
@@ -60,7 +62,7 @@ const sendEmail = (e) => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
       >
-       Got questions, collaboration ideas, or just want to say hi? Please fill out the form below.
+        Got questions, collaboration ideas, or just want to say hi? Please fill out the form below.
       </motion.p>
 
       <form
@@ -113,12 +115,28 @@ const sendEmail = (e) => {
         </div>
       </form>
 
+      {/* Notifikasi sukses */}
       {sent && (
         <div className="fixed top-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-4 rounded-lg shadow-xl z-50 w-[300px]">
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-between items-center">
             <p className="text-lg">Your message has been sent successfully!</p>
             <button
               onClick={() => setSent(false)}
+              className="ml-4 text-white hover:text-gray-200 font-bold text-lg leading-none"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Notifikasi error */}
+      {error && (
+        <div className="fixed top-8 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-4 rounded-lg shadow-xl z-50 w-[300px]">
+          <div className="flex justify-between items-center">
+            <p className="text-lg">{error}</p>
+            <button
+              onClick={() => setError("")}
               className="ml-4 text-white hover:text-gray-200 font-bold text-lg leading-none"
             >
               X
