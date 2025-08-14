@@ -8,7 +8,7 @@
 /* Tambahkan di file CSS global */
 .scroll-container {
   scrollbar-width: thin;
-  scrollbar-color: #527fc7 transparent; /* biru Tailwind */
+  scrollbar-color: #5b7eb8 transparent; 
 }
 
 .scroll-container::-webkit-scrollbar {

@@ -12,6 +12,7 @@ import pHtml from "../assets/projectHTML.png";
 import pC from "../assets/projectC.png";
 import pJava from "../assets/projectJava.png";
 import pJva from "../assets/projectJava2.png";
+import pPhp from "../assets/projectPhp.png";
 import { Github } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState, useRef } from "react";
@@ -147,6 +148,14 @@ export default function Tech() {
       github: "https://github.com/Wahyudi120505/haymart-pos-api",
     },
     {
+      title: "Php | Koperasi simpan pinjam",
+      desc: "Web application built with PHP and MySQL to manage a cooperative's operations, including admin, members, savings, loans, and installments. Features role-based access, secure login, CRUD functions, and a responsive dashboard with Bootstrap.",
+      image: pPhp,
+      tech: ["Php", "Mysql","Bootstrap 5"],
+      github:
+        "https://github.com/PutriAyunda11/Project-Koperasi-PHP-Kelompok5.git",
+    },
+    {
       title: "React Application",
       desc: "A modern React app featuring search and API interaction, built with functional components and hooks.",
       image: ReactLogo,
@@ -179,7 +188,17 @@ export default function Tech() {
           </motion.h2>
 
           {/* Tablet & Desktop View - Logo + Teks */}
-          <div className="hidden sm:block space-y-6 pt-2 pr-8 pl-8 max-h-[970px] overflow-y-auto scroll-container">
+          <div
+            className="hidden sm:block space-y-6 pt-2 pr-8 pl-8 overflow-y-auto scroll-container"
+            style={{
+              maxHeight:
+                window.innerWidth >= 1024
+                  ? "630px" 
+                  : window.innerWidth >= 768
+                  ? "900px"
+                  : "none", 
+            }}
+          >
             {tools.map((tool, index) => (
               <motion.div
                 key={index}
@@ -266,6 +285,7 @@ export default function Tech() {
         {/* My Projects */}
         <motion.div
           ref={projectsRef}
+          id="projects"
           initial={{ opacity: 0, x: 50 }}
           animate={
             projectsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
@@ -273,7 +293,7 @@ export default function Tech() {
           transition={{ duration: fastDuration, delay: 0.3 }}
         >
           <motion.h2
-            className="text-2xl font-bold text-center mb-6 text-blue-800"
+            className="text-2xl font-bold text-center mb-6 text-blue-800 lg:pt-0 sm:pt-10 md:pt-13"
             initial={{ opacity: 0, y: -20 }}
             animate={
               projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }
@@ -282,18 +302,32 @@ export default function Tech() {
           >
             My Projects
           </motion.h2>{" "}
- <div className="space-y-8">
+          <div
+            className="space-y-8 overflow-y-auto scroll-container"
+            style={{
+              maxHeight:
+                window.innerWidth >= 1024
+                  ? "630px" 
+                  : window.innerWidth >= 768
+                  ? "930px" 
+                  : "none", 
+            }}
+          >
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 className="flex flex-col md:flex-row bg-white/10 hover:bg-white/20 transition p-4 rounded-xl hover:shadow-lg gap-4"
                 initial={{ opacity: 0, x: 30 }}
-                animate={projectsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                animate={
+                  projectsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
+                }
                 transition={{
                   duration: fastItemDuration,
                   delay: index * (isMobile ? 0.05 : 0.15),
                 }}
-              >                <div className="md:w-1/3 w-full">
+              >
+                {" "}
+                <div className="md:w-1/3 w-full">
                   <img
                     src={project.image}
                     alt={project.title}

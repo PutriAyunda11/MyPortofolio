@@ -1,34 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link as ScrollLink, scroller } from "react-scroll";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLaptop, setIsLaptop] = useState(false); // cek laptop/desktop ≥1024px
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLaptop(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleNavigate = (section) => {
     if (location.pathname === "/") {
-      scroller.scrollTo(section, {
-        duration: 800,
-        delay: 0,
-        smooth: "easeInOutQuart",
-      });
+      let offsetValue = 0;
+
+      if (section === "projects") {
+        offsetValue = isLaptop ? -50 : -100; // offset berbeda untuk laptop/mobile
+        scroller.scrollTo("projects", {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          offset: offsetValue,
+        });
+      } else if (section === "toolbox") {
+        scroller.scrollTo("toolbox", {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          offset: 0,
+        });
+      } else if (section === "home") {
+        scroller.scrollTo("home", {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          offset: 0,
+        });
+      }
     } else {
       navigate(`/?section=${section}`);
     }
     setMenuOpen(false);
   };
 
-  // Animasi untuk box
   const boxVariants = {
     hidden: { opacity: 0, backgroundColor: "#ffffff" },
     visible: { opacity: 1, backgroundColor: "#ffffff" },
     exit: { opacity: 0, backgroundColor: "#ffffff" },
   };
 
-  // Animasi untuk teks dalam box
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -39,16 +67,27 @@ export default function Header() {
     exit: { opacity: 0, y: -20 },
   };
 
-  const menuItems = [
-    { label: "Home", section: "home" },
-    { label: "ToolBox", section: "toolbox" },
-    { label: "Resume", section: "resume" },
-  ];
+  // Atur menu berdasarkan ukuran layar
+  const menuItems = isLaptop
+    ? [
+        { label: "Home", section: "home" },
+        { label: "ToolBox & Project", section: "toolbox" },
+        { label: "Resume", section: "resume" },
+      ]
+    : [
+        { label: "Home", section: "home" },
+        { label: "ToolBox", section: "toolbox" },
+        { label: "Projects", section: "projects" },
+        { label: "Resume", section: "resume" },
+      ];
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       <div className="flex items-center justify-between px-6 py-6 md:px-10">
-        <div className="text-blue-500 text-lg md:text-2xl font-bold tracking-wide hover:text-blue-400 cursor-pointer">
+        <div
+          className="text-blue-500 text-lg md:text-2xl font-bold tracking-wide hover:text-blue-400 cursor-pointer"
+          onClick={() => handleNavigate("home")}
+        >
           MyPortofolio
         </div>
         <button
@@ -161,7 +200,7 @@ export default function Header() {
                 GH
               </a>
               <a
-                href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331"
                 target="_blank"
                 rel="noopener noreferrer"
               >

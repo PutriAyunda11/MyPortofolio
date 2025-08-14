@@ -1,12 +1,21 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { scroller } from "react-scroll";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 
 export default function Footer() {
-  const [_menuOpen, setMenuOpen] = useState(false);
+  const [isLaptop, setIsLaptop] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLaptop(window.innerWidth >= 1024); // ≥1024px dianggap laptop/desktop
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const footerRef = useRef(null);
   const contentRef = useRef(null);
@@ -24,12 +33,24 @@ export default function Footer() {
     } else {
       navigate(`/?section=${section}`);
     }
-    setMenuOpen(false);
   };
+
+  // Atur menu berdasarkan ukuran layar
+  const menuItems = isLaptop
+    ? [
+        { label: "My Home", section: "home" },
+        { label: "My ToolBox & My Project", section: "toolbox" },
+        { label: "My Résumé", section: "resume" },
+      ]
+    : [
+        { label: "My Home", section: "home" },
+        { label: "My ToolBox", section: "toolbox" },
+        { label: "My Projects", section: "projects" },
+        { label: "My Résumé", section: "resume" },
+      ];
 
   return (
     <footer className="bg-[#2F2FA2] text-[#C0E57C] px-6 sm:px-10 md:px-16 py-16">
-      {/* Animasi box utama footer */}
       <motion.div
         ref={footerRef}
         initial={{ y: 50, opacity: 0 }}
@@ -37,7 +58,6 @@ export default function Footer() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-7xl mx-auto"
       >
-        {/* Konten footer dengan animasi fade dari putih */}
         <motion.div
           ref={contentRef}
           initial={{ opacity: 0, color: "#ffffff" }}
@@ -52,9 +72,7 @@ export default function Footer() {
             {/* Kiri */}
             <div>
               <div className="mb-6">
-                <h4 className="text-sm tracking-widest mb-2">
-                  SAY HELLO
-                </h4>
+                <h4 className="text-sm tracking-widest mb-2">SAY HELLO</h4>
                 <a
                   href="mailto:putriayundagustiara@gmail.com"
                   className="text-lg font-medium hover:text-white"
@@ -73,11 +91,7 @@ export default function Footer() {
 
             {/* Kanan */}
             <div className="flex flex-col gap-3 sm:items-end">
-              {[
-                { label: "My Home", section: "home" },
-                { label: "My ToolBox", section: "toolbox" },
-                { label: "My Résumé", section: "resume" },
-              ].map((item, idx) => (
+              {menuItems.map((item, idx) => (
                 <motion.button
                   key={idx}
                   onClick={() => handleNavigate(item.section)}
@@ -105,10 +119,18 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <p className="text-sm">&copy; My Portofolio 2025</p>
             <div className="flex gap-6 text-15px font-medium">
-              <a href="#" className="hover:text-white" target="_blank" rel="noopener noreferrer">TW</a>
-              <a href="https://github.com/PutriAyunda11" className="hover:text-white" target="_blank" rel="noopener noreferrer">GH</a>
-              <a href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331" className="hover:text-white" target="_blank" rel="noopener noreferrer">LN</a>
-              <a href="https://www.instagram.com/pppp_yyygstrr/" className="hover:text-white" target="_blank" rel="noopener noreferrer">IG</a>
+              <a href="#" className="hover:text-white" target="_blank" rel="noopener noreferrer">
+                TW
+              </a>
+              <a href="https://github.com/PutriAyunda11" className="hover:text-white" target="_blank" rel="noopener noreferrer">
+                GH
+              </a>
+              <a href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331" className="hover:text-white" target="_blank" rel="noopener noreferrer">
+                LN
+              </a>
+              <a href="https://www.instagram.com/pppp_yyygstrr/" className="hover:text-white" target="_blank" rel="noopener noreferrer">
+                IG
+              </a>
             </div>
           </div>
         </motion.div>
