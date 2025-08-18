@@ -59,7 +59,7 @@ export default function About() {
                 SEE RESUME
               </span>
               <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-              <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full transition-all duration-500 ease-in-out z-0"></span>
+              <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full group-active:w-full transition-all duration-500 ease-in-out z-0"></span>
             </Link>
           </div>
         </motion.div>
@@ -109,7 +109,7 @@ export default function About() {
                 SEND MESSAGE
               </span>
               <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-              <span className="absolute left-0 top-0 h-full w-0 bg-[#4b22d1] group-hover:w-full transition-all duration-500 ease-in-out z-0"></span>
+              <span className="absolute left-0 top-0 h-full w-0 bg-[#4b22d1] group-hover:w-full group-active:w-full transition-all duration-500 ease-in-out z-0"></span>
             </Link>
           </div>
         </motion.div>

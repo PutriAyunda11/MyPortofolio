@@ -62,7 +62,8 @@ export default function KontakForm() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
       >
-        Got questions, collaboration ideas, or just want to say hi? Please fill out the form below.
+        Got questions, collaboration ideas, or just want to say hi? Please fill
+        out the form below.
       </motion.p>
 
       <form
@@ -105,12 +106,13 @@ export default function KontakForm() {
             type="submit"
             className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-10 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
           >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
               SEND
             </span>
-            <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
+            <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
 
-            <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full transition-all duration-500 ease-in-out z-0"></span>
+            {/* background animasi */}
+            <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full group-active:w-full transition-all duration-500 ease-in-out z-0"></span>
           </button>
         </div>
       </form>
