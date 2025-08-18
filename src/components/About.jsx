@@ -55,11 +55,16 @@ export default function About() {
               to="/resumee"
               className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
             >
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              {/* Text */}
+              <span className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white">
                 SEE RESUME
               </span>
-              <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-              <span className="absolute inset-0 bg-[#4b22d1] w-0 group-hover:w-full group-active:w-full transition-all duration-500 ease-in-out z-0"></span>
+
+              {/* Icon */}
+              <ArrowRight className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
+
+              {/* Background animasi */}
+              <span className="absolute inset-0 bg-[#4b22d1] w-0 active:w-full lg:group-hover:w-full transition-all duration-1000 lg:duration-500 ease-in-out z-0"></span>
             </Link>
           </div>
         </motion.div>
@@ -105,11 +110,11 @@ export default function About() {
               to="/message"
               className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
             >
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              <span className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white">
                 SEND MESSAGE
               </span>
-              <ArrowRight className="relative z-10 transition-colors duration-300 group-hover:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-              <span className="absolute left-0 top-0 h-full w-0 bg-[#4b22d1] group-hover:w-full group-active:w-full transition-all duration-500 ease-in-out z-0"></span>
+              <ArrowRight className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
+              <span className="absolute left-0 top-0 h-full w-0 bg-[#4b22d1] active:w-full lg:group-hover:w-full transition-all duration-1000 lg:duration-500 ease-in-out z-0"></span>
             </Link>
           </div>
         </motion.div>
