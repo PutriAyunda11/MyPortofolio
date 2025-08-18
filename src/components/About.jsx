@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function About() {
   // Refs untuk box kiri & kanan
@@ -11,13 +11,13 @@ export default function About() {
   const leftInView = useInView(leftRef, { once: false, amount: 0.3 });
   const rightInView = useInView(rightRef, { once: false, amount: 0.3 });
 
-  // State untuk kontrol tombol (biar stay setelah diklik di HP/iPad)
-  const [resumeClicked, setResumeClicked] = useState(false);
-  const [messageClicked, setMessageClicked] = useState(false);
+  // cek url aktif (biar tombol yang sesuai halaman aktif tetap menyala)
+  const location = useLocation();
 
   return (
     <section>
       <div className="w-full max-w-7xl min-h-[600px] grid grid-cols-1 md:grid-cols-2 border-lg border-[#d8ccf2] divide-y-[3px] md:divide-y-0 md:divide-x-[3px] divide-[#b197fc] bg-[#f3f0ff]/40 backdrop-blur-sm">
+        
         {/* Left Card */}
         <motion.div
           ref={leftRef}
@@ -49,36 +49,26 @@ export default function About() {
             View my CV/RESUME to learn more about my experience and skills.
           </motion.p>
 
-          <div
-            initial={{ opacity: 0, y: 20 }}
-            animate={leftInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-            className="mt-10"
-          >
+          <div className="mt-10">
             <Link
               to="/resumee"
-              onClick={() => setResumeClicked(true)}
-              className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
+              className={`relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] transition-all duration-700
+                ${location.pathname === "/resumee" ? "text-white bg-[#4b22d1]" : "text-[#4b22d1]"}
+              `}
             >
               {/* Text */}
-              <span
-                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out
-                  ${resumeClicked ? "text-white" : "lg:group-hover:text-white"}`}
-              >
+              <span className="relative z-10">
                 SEE RESUME
               </span>
 
               {/* Icon */}
-              <ArrowRight
-                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out 
-                  w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]
-                  ${resumeClicked ? "text-white" : "lg:group-hover:text-white"}`}
-              />
+              <ArrowRight className="relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
 
               {/* Background animasi */}
               <span
-                className={`absolute inset-0 transition-all duration-1000 lg:duration-500 ease-in-out z-0
-                  ${resumeClicked ? "w-full bg-[#4b22d1]" : "w-0 bg-[#4b22d1] lg:group-hover:w-full"}`}
+                className={`absolute inset-0 bg-[#4b22d1] transition-all duration-700 z-0
+                  ${location.pathname === "/resumee" ? "w-full" : "w-0"}
+                `}
               ></span>
             </Link>
           </div>
@@ -115,31 +105,21 @@ export default function About() {
             I’m open to discussions, collaborations, or just saying hello.
           </motion.p>
 
-          <div
-            initial={{ opacity: 0, y: 20 }}
-            animate={rightInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-            className="mt-10"
-          >
+          <div className="mt-10">
             <Link
               to="/message"
-              onClick={() => setMessageClicked(true)}
-              className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
+              className={`relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] transition-all duration-700
+                ${location.pathname === "/message" ? "text-white bg-[#4b22d1]" : "text-[#4b22d1]"}
+              `}
             >
-              <span
-                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out
-                  ${messageClicked ? "text-white" : "lg:group-hover:text-white"}`}
-              >
+              <span className="relative z-10">
                 SEND MESSAGE
               </span>
-              <ArrowRight
-                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out 
-                  w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]
-                  ${messageClicked ? "text-white" : "lg:group-hover:text-white"}`}
-              />
+              <ArrowRight className="relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
               <span
-                className={`absolute left-0 top-0 h-full transition-all duration-1000 lg:duration-500 ease-in-out z-0
-                  ${messageClicked ? "w-full bg-[#4b22d1]" : "w-0 bg-[#4b22d1] lg:group-hover:w-full"}`}
+                className={`absolute inset-0 bg-[#4b22d1] transition-all duration-700 z-0
+                  ${location.pathname === "/message" ? "w-full" : "w-0"}
+                `}
               ></span>
             </Link>
           </div>
