@@ -1,23 +1,36 @@
 import { ArrowRight } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function About() {
-  // Refs untuk box kiri & kanan
   const leftRef = useRef(null);
   const rightRef = useRef(null);
 
   const leftInView = useInView(leftRef, { once: false, amount: 0.3 });
   const rightInView = useInView(rightRef, { once: false, amount: 0.3 });
 
-  // cek url aktif (biar tombol yang sesuai halaman aktif tetap menyala)
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // state animasi tombol
+  const [animatingButton, setAnimatingButton] = useState(null);
+
+  const handleClick = (to) => {
+    if (animatingButton) return; // cegah spam klik
+    setAnimatingButton(to);
+
+    // harus sama dengan `duration-700` → 700ms
+    setTimeout(() => {
+      navigate(to);
+      setAnimatingButton(null);
+    }, 700);
+  };
 
   return (
     <section>
       <div className="w-full max-w-7xl min-h-[600px] grid grid-cols-1 md:grid-cols-2 border-lg border-[#d8ccf2] divide-y-[3px] md:divide-y-0 md:divide-x-[3px] divide-[#b197fc] bg-[#f3f0ff]/40 backdrop-blur-sm">
-        
+
         {/* Left Card */}
         <motion.div
           ref={leftRef}
@@ -50,27 +63,28 @@ export default function About() {
           </motion.p>
 
           <div className="mt-10">
-            <Link
-              to="/resumee"
+            <button
+              onClick={() => handleClick("/resumee")}
               className={`relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] transition-all duration-700
-                ${location.pathname === "/resumee" ? "text-white bg-[#4b22d1]" : "text-[#4b22d1]"}
+                ${
+                  location.pathname === "/resumee" || animatingButton === "/resumee"
+                    ? "text-white"
+                    : "text-[#4b22d1]"
+                }
               `}
             >
-              {/* Text */}
-              <span className="relative z-10">
-                SEE RESUME
-              </span>
-
-              {/* Icon */}
+              <span className="relative z-10">SEE RESUME</span>
               <ArrowRight className="relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-
-              {/* Background animasi */}
               <span
                 className={`absolute inset-0 bg-[#4b22d1] transition-all duration-700 z-0
-                  ${location.pathname === "/resumee" ? "w-full" : "w-0"}
+                  ${
+                    location.pathname === "/resumee" || animatingButton === "/resumee"
+                      ? "w-full"
+                      : "w-0"
+                  }
                 `}
               ></span>
-            </Link>
+            </button>
           </div>
         </motion.div>
 
@@ -106,22 +120,28 @@ export default function About() {
           </motion.p>
 
           <div className="mt-10">
-            <Link
-              to="/message"
+            <button
+              onClick={() => handleClick("/message")}
               className={`relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] transition-all duration-700
-                ${location.pathname === "/message" ? "text-white bg-[#4b22d1]" : "text-[#4b22d1]"}
+                ${
+                  location.pathname === "/message" || animatingButton === "/message"
+                    ? "text-white"
+                    : "text-[#4b22d1]"
+                }
               `}
             >
-              <span className="relative z-10">
-                SEND MESSAGE
-              </span>
+              <span className="relative z-10">SEND MESSAGE</span>
               <ArrowRight className="relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
               <span
                 className={`absolute inset-0 bg-[#4b22d1] transition-all duration-700 z-0
-                  ${location.pathname === "/message" ? "w-full" : "w-0"}
+                  ${
+                    location.pathname === "/message" || animatingButton === "/message"
+                      ? "w-full"
+                      : "w-0"
+                  }
                 `}
               ></span>
-            </Link>
+            </button>
           </div>
         </motion.div>
       </div>
