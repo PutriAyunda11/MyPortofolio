@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function About() {
   // Refs untuk box kiri & kanan
@@ -10,6 +10,10 @@ export default function About() {
 
   const leftInView = useInView(leftRef, { once: false, amount: 0.3 });
   const rightInView = useInView(rightRef, { once: false, amount: 0.3 });
+
+  // State untuk kontrol tombol (biar stay setelah diklik di HP/iPad)
+  const [resumeClicked, setResumeClicked] = useState(false);
+  const [messageClicked, setMessageClicked] = useState(false);
 
   return (
     <section>
@@ -53,18 +57,29 @@ export default function About() {
           >
             <Link
               to="/resumee"
+              onClick={() => setResumeClicked(true)}
               className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
             >
               {/* Text */}
-              <span className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white">
+              <span
+                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out
+                  ${resumeClicked ? "text-white" : "lg:group-hover:text-white"}`}
+              >
                 SEE RESUME
               </span>
 
               {/* Icon */}
-              <ArrowRight className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
+              <ArrowRight
+                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out 
+                  w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]
+                  ${resumeClicked ? "text-white" : "lg:group-hover:text-white"}`}
+              />
 
               {/* Background animasi */}
-              <span className="absolute inset-0 bg-[#4b22d1] w-0 active:w-full lg:group-hover:w-full transition-all duration-1000 lg:duration-500 ease-in-out z-0"></span>
+              <span
+                className={`absolute inset-0 transition-all duration-1000 lg:duration-500 ease-in-out z-0
+                  ${resumeClicked ? "w-full bg-[#4b22d1]" : "w-0 bg-[#4b22d1] lg:group-hover:w-full"}`}
+              ></span>
             </Link>
           </div>
         </motion.div>
@@ -108,13 +123,24 @@ export default function About() {
           >
             <Link
               to="/message"
+              onClick={() => setMessageClicked(true)}
               className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-6 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
             >
-              <span className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white">
+              <span
+                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out
+                  ${messageClicked ? "text-white" : "lg:group-hover:text-white"}`}
+              >
                 SEND MESSAGE
               </span>
-              <ArrowRight className="relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out lg:group-hover:text-white active:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-              <span className="absolute left-0 top-0 h-full w-0 bg-[#4b22d1] active:w-full lg:group-hover:w-full transition-all duration-1000 lg:duration-500 ease-in-out z-0"></span>
+              <ArrowRight
+                className={`relative z-10 transition-colors duration-1000 lg:duration-300 ease-in-out 
+                  w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]
+                  ${messageClicked ? "text-white" : "lg:group-hover:text-white"}`}
+              />
+              <span
+                className={`absolute left-0 top-0 h-full transition-all duration-1000 lg:duration-500 ease-in-out z-0
+                  ${messageClicked ? "w-full bg-[#4b22d1]" : "w-0 bg-[#4b22d1] lg:group-hover:w-full"}`}
+              ></span>
             </Link>
           </div>
         </motion.div>
