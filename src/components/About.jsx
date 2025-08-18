@@ -7,24 +7,23 @@ export default function About() {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
 
-  const leftInView = useInView(leftRef, { once: false, amount: 0.3 });
-  const rightInView = useInView(rightRef, { once: false, amount: 0.3 });
+  // hanya animasi masuk sekali
+  const leftInView = useInView(leftRef, { once: true, amount: 0.3 });
+  const rightInView = useInView(rightRef, { once: true, amount: 0.3 });
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  // state animasi tombol
   const [animatingButton, setAnimatingButton] = useState(null);
 
   const handleClick = (to) => {
-    if (animatingButton) return; // cegah spam klik
+    if (animatingButton) return;
     setAnimatingButton(to);
 
-    // harus sama dengan `duration-700` → 700ms
     setTimeout(() => {
       navigate(to);
       setAnimatingButton(null);
-    }, 700);
+    }, 700); // sesuai durasi transition
   };
 
   return (
@@ -38,14 +37,14 @@ export default function About() {
           animate={
             leftInView
               ? { opacity: 1, backgroundColor: "rgba(255,255,255,0.4)" }
-              : { opacity: 0, backgroundColor: "rgba(255,255,255,0)" }
+              : {}
           }
           transition={{ duration: 0.8 }}
           className="p-13 sm:p-19 lg:p-35 flex flex-col justify-between text-left"
         >
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
-            animate={leftInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={leftInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             className="text-3xl sm:text-4xl font-bold sm:font-extrabold text-[#4b22d1] leading-tight mb-4"
           >
@@ -55,7 +54,7 @@ export default function About() {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={leftInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={leftInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             className="text-gray-700 text-lg"
           >
@@ -95,14 +94,14 @@ export default function About() {
           animate={
             rightInView
               ? { opacity: 1, backgroundColor: "rgba(255,255,255,0.4)" }
-              : { opacity: 0, backgroundColor: "rgba(255,255,255,0)" }
+              : {}
           }
           transition={{ duration: 0.8 }}
           className="p-13 sm:p-19 lg:p-35 flex flex-col justify-between text-left"
         >
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
-            animate={rightInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={rightInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             className="text-3xl sm:text-4xl font-bold sm:font-extrabold text-[#4b22d1] leading-tight mb-4"
           >
@@ -112,7 +111,7 @@ export default function About() {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={rightInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={rightInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             className="text-gray-700 text-lg"
           >

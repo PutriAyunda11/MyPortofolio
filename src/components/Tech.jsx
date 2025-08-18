@@ -19,31 +19,19 @@ import { useEffect, useState, useRef } from "react";
 import { useInView } from "motion/react";
 
 export default function Tech() {
-  const [isMobile, setIsMobile] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsMobile(window.innerWidth < 640); // <640px berarti mobile
+      setIsMobile(window.innerWidth < 640); 
     };
     checkScreen();
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  const toolboxRef = useRef(null);
-  const mobileToolboxRef = useRef(null);
-  const projectsRef = useRef(null);
-
-  const toolboxInView = useInView(toolboxRef, { once: false, amount: 0.2 });
-  const mobileToolboxInView = useInView(mobileToolboxRef, {
-    once: false,
-    amount: 0.2,
-  });
-  const projectsInView = useInView(projectsRef, { once: false, amount: 0.2 });
-
-  const fastDuration = isMobile ? 0.4 : 0.8; // mobile lebih cepat
+  const fastDuration = isMobile ? 0.4 : 0.8; 
   const fastItemDuration = isMobile ? 0.3 : 0.6;
-
   const tools = [
     {
       name: "C",
@@ -164,39 +152,31 @@ export default function Tech() {
     },
   ];
 
-  return (
+return (
     <motion.div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6 xl:px-0">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+
         {/* My Toolbox */}
         <motion.div
-          ref={toolboxRef}
           initial={{ opacity: 0, x: -50 }}
-          animate={
-            toolboxInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
-          }
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: fastDuration, delay: 0.2 }}
+          viewport={{ once: true }}
         >
           <motion.h2
             className="text-2xl font-bold mb-6 text-center text-blue-800"
             initial={{ opacity: 0, y: -20 }}
-            animate={
-              toolboxInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }
-            }
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: fastItemDuration }}
+            viewport={{ once: true }}
           >
             My Toolbox
           </motion.h2>
 
-          {/* Tablet & Desktop View - Logo + Teks */}
-          <div
-            className="hidden sm:block space-y-6 pt-2 pr-8 pl-8 overflow-y-auto scroll-container"
+          {/* Desktop */}
+          <div className="hidden sm:block space-y-6 pt-2 pr-8 pl-8 overflow-y-auto scroll-container"
             style={{
-              maxHeight:
-                window.innerWidth >= 1024
-                  ? "630px" 
-                  : window.innerWidth >= 768
-                  ? "900px"
-                  : "none", 
+              maxHeight: window.innerWidth >= 1024 ? "630px" : window.innerWidth >= 768 ? "900px" : "none"
             }}
           >
             {tools.map((tool, index) => (
@@ -204,37 +184,25 @@ export default function Tech() {
                 key={index}
                 className="flex items-start gap-4 group"
                 initial={{ opacity: 0, x: -30 }}
-                animate={
-                  toolboxInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }
-                }
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{
                   duration: fastItemDuration,
                   delay: index * (isMobile ? 0.05 : 0.15),
                 }}
+                viewport={{ once: true }}
               >
-                {" "}
                 <div className="relative shrink-0">
-                  <img
-                    src={tool.image}
-                    alt={tool.name}
-                    className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full shadow-md transition-transform duration-300 group-hover:scale-105"
-                  />
+                  <img src={tool.image} alt={tool.name} className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full shadow-md transition-transform duration-300 group-hover:scale-105" />
                   <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 w-[100px] rounded-b-full py-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                    <p className="text-white text-sm font-bold text-center truncate">
-                      {tool.name}
-                    </p>
+                    <p className="text-white text-sm font-bold text-center truncate">{tool.name}</p>
                   </div>
                 </div>
-                {/* Tulisan dengan animasi fade-in */}
                 <motion.div
                   className="flex-1 text-sm text-gray-700"
-                  initial={{ opacity: 0, backgroundColor: "#ffffff" }}
-                  animate={
-                    toolboxInView
-                      ? { opacity: 1, backgroundColor: "rgba(255,255,255,0)" }
-                      : { opacity: 0, backgroundColor: "#ffffff" }
-                  }
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ duration: 1 }}
+                  viewport={{ once: true }}
                 >
                   <p className="font-bold text-gray-800 mb-1">{tool.date}</p>
                   <p className="font-semibold">{tool.message}</p>
@@ -243,39 +211,24 @@ export default function Tech() {
             ))}
           </div>
 
-          {/* Mobile View - Hanya Logo */}
-          <div
-            ref={mobileToolboxRef}
-            className="flex sm:hidden flex-wrap justify-center gap-6 pt-6"
-          >
+          {/* Mobile */}
+          <div className="flex sm:hidden flex-wrap justify-center gap-6 pt-6">
             {tools.map((tool, index) => (
               <motion.div
                 key={index}
                 className="relative group"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
-                animate={
-                  mobileToolboxInView
-                    ? { opacity: 1, y: 0 }
-                    : { opacity: 0, y: 20 }
-                }
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: fastItemDuration,
                   delay: index * (isMobile ? 0.05 : 0.15),
-                  scale: { duration: 0.3 },
                 }}
+                viewport={{ once: true }}
               >
-                {" "}
-                <img
-                  src={tool.image}
-                  alt={tool.name}
-                  className="w-20 h-20 object-cover rounded-full shadow-md transition-transform duration-300 group-hover:scale-105"
-                />
-                {/* Overlay nama */}
+                <img src={tool.image} alt={tool.name} className="w-20 h-20 object-cover rounded-full shadow-md transition-transform duration-300 group-hover:scale-105" />
                 <motion.div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-black/60 w-[80px] rounded-b-full py-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                  <p className="text-white text-xs font-bold text-center truncate">
-                    {tool.name}
-                  </p>
+                  <p className="text-white text-xs font-bold text-center truncate">{tool.name}</p>
                 </motion.div>
               </motion.div>
             ))}
@@ -284,33 +237,24 @@ export default function Tech() {
 
         {/* My Projects */}
         <motion.div
-          ref={projectsRef}
-          id="projects"
           initial={{ opacity: 0, x: 50 }}
-          animate={
-            projectsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
-          }
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: fastDuration, delay: 0.3 }}
+          viewport={{ once: true }}
         >
           <motion.h2
-            className="text-2xl font-bold text-center mb-6 text-blue-800 lg:pt-0 sm:pt-10 md:pt-13"
+            className="text-2xl font-bold text-center mb-6 text-blue-800"
             initial={{ opacity: 0, y: -20 }}
-            animate={
-              projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }
-            }
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: fastItemDuration }}
+            viewport={{ once: true }}
           >
             My Projects
-          </motion.h2>{" "}
+          </motion.h2>
           <div
             className="space-y-8 overflow-y-auto scroll-container"
             style={{
-              maxHeight:
-                window.innerWidth >= 1024
-                  ? "630px" 
-                  : window.innerWidth >= 768
-                  ? "930px" 
-                  : "none", 
+              maxHeight: window.innerWidth >= 1024 ? "630px" : window.innerWidth >= 768 ? "930px" : "none"
             }}
           >
             {projects.map((project, index) => (
@@ -318,45 +262,27 @@ export default function Tech() {
                 key={index}
                 className="flex flex-col md:flex-row bg-white/10 hover:bg-white/20 transition p-4 rounded-xl hover:shadow-lg gap-4"
                 initial={{ opacity: 0, x: 30 }}
-                animate={
-                  projectsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }
-                }
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{
                   duration: fastItemDuration,
                   delay: index * (isMobile ? 0.05 : 0.15),
                 }}
+                viewport={{ once: true }}
               >
-                {" "}
                 <div className="md:w-1/3 w-full">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="rounded-lg object-cover w-full h-full max-h-32 shadow"
-                  />
+                  <img src={project.image} alt={project.title} className="rounded-lg object-cover w-full h-full max-h-32 shadow" />
                 </div>
                 <div className="md:w-2/3 w-full">
                   <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
-                    <h3 className="text-xl font-bold text-gray-700">
-                      {project.title}
-                    </h3>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-blue-800 hover:text-blue-400"
-                    >
+                    <h3 className="text-xl font-bold text-gray-700">{project.title}</h3>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-blue-800 hover:text-blue-400">
                       GitHub <Github size={15} />
                     </a>
                   </div>
                   <p className="text-sm text-gray-800 mb-3">{project.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs font-bold bg-blue-500 text-white px-3 py-1 rounded-full"
-                      >
-                        {tech}
-                      </span>
+                      <span key={idx} className="text-xs font-bold bg-blue-500 text-white px-3 py-1 rounded-full">{tech}</span>
                     ))}
                   </div>
                 </div>

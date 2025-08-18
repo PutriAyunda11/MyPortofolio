@@ -6,41 +6,55 @@ import { motion } from "motion/react";
 export default function KontakForm() {
   const form = useRef();
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState(""); // state untuk error message
+  const [error, setError] = useState("");
+  const [isAnimating, setIsAnimating] = useState(false); // animasi klik
 
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Ambil value dari input
+    if (isAnimating) return; // cegah double click
+
+    // Validasi dulu
     const name = form.current.name.value.trim();
     const email = form.current.email.value.trim();
     const message = form.current.message.value.trim();
 
-    // Validasi: cek kalau kosong
     if (!name || !email || !message) {
       setError("Please fill in all fields before sending!");
       return;
     }
 
-    emailjs
-      .sendForm(
-        "service_4thw9wf",
-        "template_hkkmei9",
-        form.current,
-        "zMbEIiv-EgL7m12FO"
-      )
-      .then(
-        (result) => {
-          console.log("Message sent: ", result.text);
-          setSent(true);
-          setError(""); // hilangkan error kalau berhasil
-          form.current.reset(); // reset form setelah sukses
-        },
-        (error) => {
-          console.error("Failed to send: ", error.text);
-          setError("Failed to send your message. Please try again.");
-        }
-      );
+    // Jalankan animasi dulu
+    setIsAnimating(true);
+
+    // Tunggu durasi animasi (1s di mobile / 0.5s di laptop)
+    const duration = window.innerWidth < 1024 ? 1000 : 500;
+
+    setTimeout(() => {
+      // baru kirim setelah animasi selesai
+      emailjs
+        .sendForm(
+          "service_4thw9wf",
+          "template_hkkmei9",
+          form.current,
+          "zMbEIiv-EgL7m12FO"
+        )
+        .then(
+          (result) => {
+            console.log("Message sent: ", result.text);
+            setSent(true);
+            setError("");
+            form.current.reset();
+          },
+          (err) => {
+            console.error("Failed to send: ", err.text);
+            setError("Failed to send your message. Please try again.");
+          }
+        )
+        .finally(() => {
+          setIsAnimating(false); // reset animasi setelah submit selesai
+        });
+    }, duration);
   };
 
   return (
@@ -68,8 +82,8 @@ export default function KontakForm() {
 
       <form
         ref={form}
-        onSubmit={sendEmail}
-        className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6 "
+        onSubmit={handleSubmit}
+        className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         <div className="flex flex-col">
           <label className="text-sm text-gray-500 mb-1">Your Name</label>
@@ -104,13 +118,26 @@ export default function KontakForm() {
         <div className="md:col-span-2 flex justify-center mt-10">
           <button
             type="submit"
-            className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-10 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1] group"
+            disabled={isAnimating}
+            className="relative overflow-hidden inline-flex items-center gap-3 font-semibold px-10 py-3 rounded-sm border-2 border-[#4b22d1] text-[#4b22d1]"
           >
-            <span className="relative z-10 transition-colors duration-1000 lg:duration-500 ease-in-out lg:group-hover:text-white active:text-white">
-              SEND
+            <span
+              className={`relative z-10 transition-colors duration-1000 lg:duration-500 ease-in-out ${
+                isAnimating ? "text-white" : ""
+              }`}
+            >
+              {isAnimating ? "SENDING..." : "SEND"}
             </span>
-            <ArrowRight className="relative z-10 transition-colors duration-1000 lg:duration-500 ease-in-out lg:group-hover:text-white active:text-white w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
-            <span className="absolute inset-0 bg-[#4b22d1] w-0 active:w-full lg:group-hover:w-full transition-all duration-1000 lg:duration-500 ease-in-out z-0"></span>
+            <ArrowRight
+              className={`relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px] transition-colors duration-1000 lg:duration-500 ease-in-out ${
+                isAnimating ? "text-white" : ""
+              }`}
+            />
+            <span
+              className={`absolute inset-0 bg-[#4b22d1] transition-all duration-1000 lg:duration-500 ease-in-out z-0 ${
+                isAnimating ? "w-full" : "w-0"
+              }`}
+            ></span>
           </button>
         </div>
       </form>
