@@ -119,8 +119,8 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <p className="text-sm">&copy; My Portofolio 2025</p>
             <div className="flex gap-6 text-15px font-medium">
-              <a href="#" className="hover:text-white" target="_blank" rel="noopener noreferrer">
-                TW
+              <a href="https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08" className="hover:text-white" target="_blank" rel="noopener noreferrer">
+                X
               </a>
               <a href="https://github.com/PutriAyunda11" className="hover:text-white" target="_blank" rel="noopener noreferrer">
                 GH

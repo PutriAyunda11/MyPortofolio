@@ -191,7 +191,7 @@ export default function Header() {
               animate="visible"
               exit="exit"
             >
-              <a href="#">TW</a>
+              <a href=" https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08 " target="_blank" rel="noopener noreferrer">X</a>
               <a
                 href="https://github.com/PutriAyunda11"
                 target="_blank"
