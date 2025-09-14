@@ -2,10 +2,14 @@ import profileImage from "../assets/photo1.jpg";
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
+import { useTranslation } from "react-i18next";
+
+const _motionDiv = motion.div;
 
 export default function Home() {
   const textRef = useRef(null);
   const imgRef = useRef(null);
+  const { t } = useTranslation();
 
   // hanya animasi sekali ketika pertama kali masuk layar
   const textInView = useInView(textRef, { once: true, amount: 0.3 });
@@ -38,13 +42,10 @@ export default function Home() {
         className="text-white text-center md:text-left flex flex-col justify-center pt-10 md:pt-0 lg:pt-15 order-2 md:order-1"
       >
         <h1 className="text-xl md:text-4xl lg:text-4xl font-extrabold text-lime-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] md:drop-shadow-none">
-          From Concept to Code.
+          {t("homeSection.title")}{" "}
         </h1>
         <p className="mt-4 text-base md:text-lg drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] md:drop-shadow-none">
-          I enjoy turning ideas into reality by engaging in every layer of a
-          project — from building solid logic, designing intuitive interfaces,
-          to managing data in an organized manner. I believe a great application
-          is a blend of powerful functionality and seamless user experience.
+          {t("homeSection.description")}{" "}
         </p>
       </motion.div>
     </div>

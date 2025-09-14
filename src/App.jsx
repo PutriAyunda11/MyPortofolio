@@ -6,7 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Tech from "./components/Tech";
-import About from "./components/About";
+import About from "./components/About"; 
 import Footer from "./components/Footer";
 import Message from "./components/Message";
 import Resume from "./components/Resume";

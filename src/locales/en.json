@@ -1,0 +1,175 @@
+{
+    "mainTitle": "MyPortofolio",
+    "home": "Home",
+    "toolboxs": "Tech Stack & Projects",
+    "toolbox": "Tech Stack",
+    "project": "Projects",
+    "resume": "Resume",
+    "sayHello": "Say Hello",
+    "email": "putriayundagustiara@gmail.com",
+    "homeSection": {
+        "title": "From Concept to Code.",
+        "description": "I enjoy turning ideas into reality by engaging in every layer of a project, from building solid logic, designing intuitive interfaces, to managing data in an organized manner. I believe a great application is a blend of powerful functionality and seamless user experience."
+    },
+    "tech": {
+        "title": "Tech Stack",
+        "tools": {
+            "c": {
+                "date": "September 2023 - January 2024",
+                "message": "Learning C language provided a strong foundation for understanding basic programming logic and data structures. Although it was quite challenging at first, I feel satisfied as it now makes it easier to learn other languages."
+            },
+            "sql": {
+                "date": "January 2024 - May 2024",
+                "message": "With SQL, I learned how to efficiently manage and retrieve data from databases. This experience has been very useful for backend projects I developed."
+            },
+            "html": {
+                "date": "June 2024 - August 2024",
+                "message": "HTML was my introduction to the web world. Through HTML, I learned how to structure pages neatly and semantically."
+            },
+            "css": {
+                "date": "June 2024 - August 2024",
+                "message": "CSS helps me enhance the appearance of web pages and make them more visually appealing."
+            },
+            "js": {
+                "date": "June 2024 - August 2024",
+                "message": "JavaScript introduced me to creating dynamic interactions on web pages, making applications more lively and interactive."
+            },
+            "java": {
+                "date": "September 2024 - April 2025",
+                "message": "Java provided a deep understanding of OOP concepts such as inheritance, polymorphism, and encapsulation. I now feel more confident creating object-oriented applications."
+            },
+            "php": {
+                "date": "Third semester of college",
+                "message": "Through PHP, I gained an understanding of backend web development, including data management and database integration, by building projects with HTML-based interfaces connected to a database."
+            },
+            "cpp": {
+                "date": "First to third semester",
+                "message": "Studied C++ from the ground up — beginning with fundamental algorithms and progressing to advanced OOP — which strengthened my overall programming skills."
+            },
+            "react": {
+                "date": "May 2025 - September 2025",
+                "message": "React introduced me to component-based architecture and state management. I enjoy how React makes UI development more structured and efficient."
+            },
+            "tailwind": {
+                "date": "May 2025 - September 2025",
+                "message": "Tailwind makes it easy for me to create responsive and consistent web designs without having to write a lot of CSS manually."
+            }
+        }
+    },
+    "projects": {
+        "title": "My Projects",
+        "list": {
+            "c": {
+                "title": "C Language | Nail Art Ayunda",
+                "desc": "A simple cashier program based on C running on CMD, displaying nail art service lists, processing payments, and automatically printing transaction receipts."
+            },
+            "java1": {
+                "title": "Java Fundamental | PureFresh Laundry",
+                "desc": "A web application with CRUD features using Java, Spring Boot, and Thymeleaf for user data management."
+            },
+            "html": {
+                "title": "Html + Css + JavaScript | Elysian Gamer",
+                "desc": "A web project providing a collection of free online games with attractive graphics, fun gameplay, and easy browser access without cost."
+            },
+            "java2": {
+                "title": "Java API | HayMart REST APIs",
+                "desc": "HayMart is a Java REST API for managing sales, product inventory, and generating sales reports, built with Spring Boot and MySQL."
+            },
+            "php": {
+                "title": "Php | Koperasi simpan pinjam",
+                "desc": "Web application built with PHP and MySQL to manage a cooperative's operations, including admin, members, savings, loans, and installments."
+            },
+            "react": {
+                "title": "React | Skintizen",
+                "desc": "A front-end application where users can browse and order Skintific products. Built with React and Tailwind CSS, with data stored in local storage."
+            }
+        }
+    },
+    "about": {
+        "left": {
+            "title": "I build\n& design my career",
+            "desc": "View my CV/RESUME to learn more about my experience and skills.",
+            "button": "SEE RESUME"
+        },
+        "right": {
+            "title": "Want to chat?\nJust send a message",
+            "desc": "I’m open to discussions, collaborations, or just saying hello.",
+            "button": "SEND MESSAGE"
+        }
+    },
+    "footer": {
+        "sayHello": "SAY HELLO",
+        "email": "putriayundagustiara@gmail.com",
+        "menu": {
+            "home": "My Home",
+            "toolbox": "My ToolBox",
+            "toolboxProject": "My ToolBox & My Project",
+            "projects": "My Projects",
+            "resume": "My Resume"
+        },
+        "portfolio": "My Portfolio 2025"
+    },
+    "contact": {
+    "title": "Send Your Message!",
+    "desc": "Got questions, collaboration ideas, or just want to say hi? Please fill out the form below.",
+    "name": "Your Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Your Email",
+    "emailPlaceholder": "Enter your email",
+    "message": "Message",
+    "messagePlaceholder": "Type your message here...",
+    "send": "SEND",
+    "sending": "SENDING...",
+    "success": "Your message has been sent successfully!",
+    "error": {
+      "empty": "Please fill in all fields before sending!",
+      "failed": "Failed to send your message. Please try again."
+    }
+  },
+  "resumes": {
+    "profile": {
+      "title": "Profile",
+      "desc": "An Associate Degree student in Informatics Management with skills in Java programming, covering OOP implementation, REST API development, and application building using Spring Boot. Experienced with SQL for database management and web development using JavaScript, React.js, Tailwind, and HTML on the frontend. Basic understanding of C programming for logic, and experience as a Teaching Assistant supporting academic activities."
+    },
+    "education": {
+      "title": "Education",
+      "university": "Universitas Nasional Pasim Bandung – D3 in Informatics Management",
+      "gpa": "GPA: 3.77",
+      "period": "2023 – Present",
+      "school": "MA Al-Fajar Kalapadua – Social Science",
+      "avg": "Average Score: 88.0",
+      "graduated": "Graduated 2023"
+    },
+    "experience": {
+      "title": "Experience",
+      "assistant": "Teaching Assistant – Universitas Nasional Pasim (May 2025 – Present)",
+      "desc": "Supporting academic and teaching activities, including assisting in preparing materials and ensuring smooth lectures."
+    },
+    "training": {
+      "title": "Training & Courses",
+      "list": [
+        "C Programming Logic and Algorithm Training – 2023",
+        "Web Programming with HTML, CSS, and JavaScript – 2024",
+        "Java Fundamental Programming (Spring Boot & MySQL) – 2024",
+        "Advanced Java Programming (Spring Framework & Database) – 2025",
+        "Web Application Development with React & Tailwind – 2025"
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "list": [
+        "Programming Languages: Java (REST API), JavaScript, C, HTML",
+        "Frameworks & Libraries: Spring Boot, React.js, Tailwind CSS",
+        "Database: SQL (MySQL)",
+        "Tools: Git, GitHub, Visual Studio Code"
+      ]
+    },
+    "languages": {
+      "title": "Languages",
+      "list": [
+        "Indonesian – Active",
+        "English – Basic (able to read programming documentation)"
+      ]
+    }
+  }
+}

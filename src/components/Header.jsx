@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import { Link as ScrollLink, scroller } from "react-scroll";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
+
+const _motionDiv = motion.div;
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLaptop, setIsLaptop] = useState(false); // cek laptop/desktop ≥1024px
+  const [isLaptop, setIsLaptop] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language || "en");
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,15 +21,16 @@ export default function Header() {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
+    setLanguage(i18n.language);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [i18n.language]);
 
   const handleNavigate = (section) => {
     if (location.pathname === "/") {
       let offsetValue = 0;
 
       if (section === "projects") {
-        offsetValue = isLaptop ? -50 : -100; // offset berbeda untuk laptop/mobile
+        offsetValue = isLaptop ? -50 : -100;
         scroller.scrollTo("projects", {
           duration: 800,
           delay: 0,
@@ -67,20 +74,24 @@ export default function Header() {
     exit: { opacity: 0, y: -20 },
   };
 
-  // Atur menu berdasarkan ukuran layar
   const menuItems = isLaptop
     ? [
-        { label: "Home", section: "home" },
-        { label: "ToolBox & Project", section: "toolbox" },
-        { label: "Resume", section: "resume" },
+        { label: t("home"), section: "home" },
+        { label: t("toolboxs"), section: "toolbox" },
+        { label: t("resume"), section: "resume" },
       ]
     : [
-        { label: "Home", section: "home" },
-        { label: "ToolBox", section: "toolbox" },
-        { label: "Projects", section: "projects" },
-        { label: "Resume", section: "resume" },
+        { label: t("home"), section: "home" },
+        { label: t("toolbox"), section: "toolbox" },
+        { label: t("project"), section: "projects" },
+        { label: t("resume"), section: "resume" },
       ];
 
+  const toggleLanguage = () => {
+    const newLang = language === "en" ? "id" : "en";
+    setLanguage(newLang);
+    i18n.changeLanguage(newLang);
+  };
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       <div className="flex items-center justify-between px-6 py-6 md:px-10">
@@ -88,7 +99,7 @@ export default function Header() {
           className="text-blue-500 text-lg md:text-2xl font-bold tracking-wide hover:text-blue-400 cursor-pointer"
           onClick={() => handleNavigate("home")}
         >
-          MyPortofolio
+          {t("mainTitle")}
         </div>
         <button
           onClick={() => setMenuOpen(true)}
@@ -165,7 +176,7 @@ export default function Header() {
               exit="exit"
             >
               <p className="text-[12px] text-gray-400 uppercase tracking-wider mb-3">
-                Say Hello
+                {t("sayHello")}
               </p>
               <a
                 href="mailto:putriayundagustiara@gmail.com"
@@ -184,35 +195,57 @@ export default function Header() {
             </motion.div>
 
             <motion.div
-              className="mt-8 flex space-x-4 text-sm text-purple-800"
+              className="mt-8 flex flex-col space-y-4 text-sm text-purple-800"
               variants={textVariants}
               custom={menuItems.length + 1}
               initial="hidden"
               animate="visible"
               exit="exit"
             >
-              <a href=" https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08 " target="_blank" rel="noopener noreferrer">X</a>
-              <a
-                href="https://github.com/PutriAyunda11"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GH
-              </a>
-              <a
-                href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LN
-              </a>
-              <a
-                href="https://www.instagram.com/pppp_yyygstrr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                IG
-              </a>
+              {/* Social Links */}
+              <div className="flex space-x-4 mb-4">
+                <div
+                  className="flex items-center gap-0.5 cursor-pointer select-none"
+                  onClick={toggleLanguage}
+                >
+                  <Globe size={22} className="text-purple-800" />
+                  <span className="text-sm font-semibold text-purple-800">
+                    {language.toUpperCase()}
+                  </span>
+                </div>
+                <a
+                  href="https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold"
+                >
+                  X
+                </a>
+                <a
+                  href="https://github.com/PutriAyunda11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold"
+                >
+                  GH
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold"
+                >
+                  LN
+                </a>
+                <a
+                  href="https://www.instagram.com/pppp_yyygstrr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold"
+                >
+                  IG
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         )}

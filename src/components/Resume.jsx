@@ -1,126 +1,158 @@
+import React, { useRef } from "react";
+import html2pdf from "html2pdf.js/dist/html2pdf.bundle";
+import { Download } from "lucide-react";
+import { useTranslation } from "react-i18next";
+
 export default function Resume() {
+  const { t } = useTranslation();
+  const resumeRef = useRef(null);
+
+  const fixColorsForPdf = (element) => {
+    if (!element) return;
+    const all = element.querySelectorAll("*");
+    all.forEach((el) => {
+      const styles = window.getComputedStyle(el);
+      ["color", "backgroundColor", "borderColor"].forEach((prop) => {
+        const val = styles[prop];
+        if (val.includes("oklch")) {
+          if (prop === "color" || prop === "borderColor") {
+            el.style[prop] = "#000000";
+          } else if (prop === "backgroundColor") {
+            el.style[prop] = "#ffffff";
+          }
+        }
+      });
+    });
+  };
+
+  const handleDownloadPdf = () => {
+    const element = resumeRef.current;
+    if (!element) return;
+    fixColorsForPdf(element);
+
+    const opt = {
+      margin: 10,
+      filename: "Putri_Ayunda_Gustiara_CV.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, logging: false },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf().set(opt).from(element).save();
+  };
+
+  const titleColor = "#0b3d91";
+  const borderColor = "#0b3d91";
+
   return (
-    <section className="max-w-8xl mx-auto px-8 py-20 text-gray-800">
-      <h1 className="text-3xl font-bold text-center mb-8 text-purple-700">
-        Curriculum Vitae
-      </h1>
+    <section className="max-w-7xl mx-auto px-4 py-10 text-gray-800">
+      <div ref={resumeRef} className="bg-white p-6">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold" style={{ color: titleColor }}>
+            Putri Ayunda Gustiara
+          </h1>
+          {/* kontak tetap */}
+          <p className="mt-2">  Sukaraja, Cicendo, Bandung, Jawa Barat |{" "} <a href="https://wa.me/628388459523" target="_blank" rel="noopener noreferrer" className="text-[#0b3d91] hover:underline" > +62 838-8459-523 </a>{" "} |{" "} <a href="mailto:putriayundagustiara@gmail.com" className="text-[#0b3d91] hover:underline" > putriayundagustiara@gmail.com </a>{" "} |{" "} <a href="https://github.com/PutriAyunda11" target="_blank" rel="noopener noreferrer" className="text-[#0b3d91] hover:underline" > GitHub </a>{" "} |{" "} <a href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331" target="_blank" rel="noopener noreferrer" className="text-[#0b3d91] hover:underline" > LinkedIn </a>{" "} |{" "} <a href="https://my-portofolio-gamma-green.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#0b3d91] hover:underline" > {" "} Portofolio </a> </p>
+        </div>
 
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold">Putri Ayunda Gustiara</h2>
-        <p>Sukaraja, Cicendo, Kota Bandung, Jawa Barat</p>
-        <p>
-          Email:{" "}
-          <a
-            href="mailto:putriayundagustiara@gmail.com"
-            className="text-blue-600 hover:underline"
-          >
-            putriayundagustiara@gmail.com
-          </a>
-        </p>
-        <p>No. HP: 0838-8459-523</p>
+        {/* Profil */}
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold border-b pb-1" style={{ color: titleColor, borderColor }}>
+            {t("resumes.profile.title")}
+          </h2>
+          <p className="mt-2 text-black text-justify">
+            {t("resumes.profile.desc")}
+          </p>
+        </div>
+
+        {/* Pendidikan */}
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold border-b pb-1" style={{ color: titleColor, borderColor }}>
+            {t("resumes.education.title")}
+          </h2>
+          <ul className="mt-2 space-y-4 text-black">
+            <li className="flex justify-between">
+              <div>
+                <p className="font-semibold">{t("resumes.education.university")}</p>
+                <ul className="list-disc ml-6">
+                  <li>{t("resumes.education.gpa")}</li>
+                </ul>
+              </div>
+              <span>{t("resumes.education.period")}</span>
+            </li>
+            <li className="flex justify-between">
+              <div>
+                <p className="font-semibold">{t("resumes.education.school")}</p>
+                <ul className="list-disc ml-6">
+                  <li>{t("resumes.education.avg")}</li>
+                </ul>
+              </div>
+              <span>{t("resumes.education.graduated")}</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Pengalaman */}
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold border-b pb-1" style={{ color: titleColor, borderColor }}>
+            {t("resumes.experience.title")}
+          </h2>
+          <div className="mt-2 ml-1">
+            <p className="font-semibold">{t("resumes.experience.assistant")}</p>
+          </div>
+          <ul className="mt-2 list-disc ml-6 space-y-1 text-black">
+            <li>{t("resumes.experience.desc")}</li>
+          </ul>
+        </div>
+
+        {/* Pelatihan */}
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold border-b pb-1" style={{ color: titleColor, borderColor }}>
+            {t("resumes.training.title")}
+          </h2>
+          <ul className="mt-2 list-disc ml-6 space-y-1 text-black">
+            {t("resumes.training.list", { returnObjects: true }).map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Keahlian */}
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold border-b pb-1" style={{ color: titleColor, borderColor }}>
+            {t("resumes.skills.title")}
+          </h2>
+          <ul className="mt-2 list-disc ml-6 space-y-1 text-black">
+            {t("resumes.skills.list", { returnObjects: true }).map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Bahasa */}
+        <div>
+          <h2 className="text-lg font-semibold border-b pb-1 pt-2" style={{ color: titleColor, borderColor }}>
+            {t("resumes.languages.title")}
+          </h2>
+          <ul className="mt-2 list-disc ml-6 space-y-1 text-black">
+            {t("resumes.languages.list", { returnObjects: true }).map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold text-purple-600">
-          Profil Singkat
-        </h3>
-        <p className="mt-2">
-          Profesional di bidang teknologi informasi dengan keahlian pada
-          pengembangan perangkat lunak, mencakup pemrograman front-end dan
-          back-end. Berpengalaman dalam membangun antarmuka pengguna yang
-          interaktif sekaligus mengelola logika dan basis data secara efisien.
-          Memiliki kemampuan bekerja sama dalam tim maupun secara mandiri,
-          adaptif terhadap teknologi baru, serta berkomitmen untuk terus
-          mengembangkan kompetensi di industri IT yang dinamis.
-        </p>
-      </div>
-
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold text-purple-600">Pendidikan</h3>
-        <ul className="list-disc ml-6 mt-2 space-y-2">
-          <li>
-            <strong>Universitas Nasional Pasim</strong> – D3 Manajemen
-            Informatika
-            <br />
-            Bandung, 2023 – Sekarang
-            <br />
-            Sedang menempuh pendidikan tinggi dengan fokus pada pemrograman,
-            sistem basis data, serta praktik pengembangan aplikasi berbasis web.
-          </li>
-          <li>
-            <strong>Madrasah Aliyah Al-Fajar Kalapadua</strong> – Ilmu
-            Pengetahuan Sosial (IPS)
-            <br />
-            Bandung, Lulus tahun 2023
-            <br />
-            Selama masa sekolah, aktif dalam berbagai kegiatan organisasi serta
-            menunjukkan ketertarikan terhadap bidang teknologi dan informasi.
-          </li>
-        </ul>
-      </div>
-
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold text-purple-600">
-          Keahlian Teknis
-        </h3>
-        <ul className="list-disc ml-6 mt-2 space-y-1">
-          <li>
-            <strong>Bahasa Pemrograman:</strong> Mampu menulis dan memahami kode
-            menggunakan React.js, Tailwind, Java, C, HTML, JavaScript, serta CSS
-            untuk pengembangan aplikasi web maupun desktop.
-          </li>
-          <li>
-            <strong>Database:</strong> Terbiasa menggunakan SQL (MySQL) dalam
-            mengelola dan memanipulasi data untuk aplikasi berbasis data.
-          </li>
-          <li>
-            <strong>Tools:</strong> Menggunakan Visual Studio Code sebagai text
-            editor utama, serta memahami penggunaan Git dan GitHub untuk version
-            control.
-          </li>
-          <li>
-            <strong>Web Development:</strong> Memiliki pemahaman dasar mengenai
-            pengembangan front-end dan back-end, mulai dari pembuatan antarmuka,
-            pengolahan data, hingga integrasi API.
-          </li>
-          <li>
-            <strong>Konsep:</strong> Familiar dengan konsep dasar seperti CRUD,
-            OOP, REST API, serta pengembangan website modern berbasis front-end
-            dan back-end.
-          </li>
-        </ul>
-      </div>
-
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold text-purple-600">Bahasa</h3>
-        <ul className="list-disc ml-6 mt-2 space-y-1">
-          <li>
-            <strong>Bahasa Indonesia</strong> — Aktif secara lisan maupun
-            tulisan, serta mampu berkomunikasi dengan baik dalam lingkungan
-            profesional maupun informal.
-          </li>
-          <li>
-            <strong>Bahasa Inggris</strong> — Tingkat dasar, mampu memahami
-            kosakata umum dan membaca dokumentasi sederhana terkait pemrograman.
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold text-purple-600">
-          Catatan Tambahan
-        </h3>
-        <p className="mt-2">
-          Saat ini saya sedang aktif mengembangkan beberapa proyek berbasis web
-          menggunakan React, Tailwind, HTML, JavaScript, dan CSS, serta
-          mengintegrasikan API eksternal untuk meningkatkan fungsionalitas
-          aplikasi. Selain itu, saya juga aktif membuat API menggunakan bahasa
-          pemrograman Java untuk mendukung pengembangan aplikasi. Saya memiliki
-          ketertarikan yang tinggi pada bidang pemrograman, baik di sisi
-          front-end maupun back-end. Terbuka untuk kesempatan bekerja penuh
-          waktu atau kontrak yang dapat membantu mengasah keterampilan, menambah
-          pengalaman, serta memperluas wawasan di industri teknologi.{" "}
-        </p>
+      {/* Tombol Download */}
+      <div className="flex justify-end mt-6">
+        <button
+          onClick={handleDownloadPdf}
+          className="flex items-center gap-2 text-white px-4 py-2 rounded shadow cursor-pointer transition-colors duration-200"
+          style={{ backgroundColor: "#374151" }}
+        >
+          <Download size={18} />
+         Download PDF
+        </button>
       </div>
     </section>
   );

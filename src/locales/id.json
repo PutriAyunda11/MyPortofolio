@@ -1,0 +1,175 @@
+{
+    "mainTitle": "Portofolio Saya",
+    "home": "Beranda",
+    "toolboxs": "Teknologi & Proyek",
+    "toolbox": "Teknologi",
+    "project": "Proyek",
+    "resume": "Resume",
+    "sayHello": "Sapa Saya",
+    "email": "putriayundagustiara@gmail.com",
+    "homeSection": {
+        "title": "Dari Konsep ke Kode.",
+        "description": "Saya senang mengubah ide menjadi kenyataan dengan terlibat di setiap lapisan proyek, mulai dari membangun logika yang solid, merancang antarmuka yang intuitif, hingga mengelola data secara terstruktur. Saya percaya aplikasi yang hebat adalah perpaduan antara fungsi yang kuat dan pengalaman pengguna yang mulus."
+    },
+    "tech": {
+        "title": "Teknologi",
+        "tools": {
+            "c": {
+                "date": "September 2023 - Januari 2024",
+                "message": "Belajar bahasa C memberi dasar yang kuat untuk memahami logika pemrograman dasar dan struktur data. Walau awalnya cukup menantang, saya merasa puas karena sekarang lebih mudah mempelajari bahasa lain."
+            },
+            "sql": {
+                "date": "Januari 2024 - Mei 2024",
+                "message": "Dengan SQL, saya belajar bagaimana mengelola dan mengambil data dari database secara efisien. Pengalaman ini sangat bermanfaat untuk proyek backend yang saya kembangkan."
+            },
+            "html": {
+                "date": "Juni 2024 - Agustus 2024",
+                "message": "HTML adalah perkenalan saya ke dunia web. Melalui HTML, saya belajar menyusun halaman dengan rapi dan semantik."
+            },
+            "css": {
+                "date": "Juni 2024 - Agustus 2024",
+                "message": "CSS membantu saya memperindah tampilan halaman web dan membuatnya lebih menarik."
+            },
+            "js": {
+                "date": "Juni 2024 - Agustus 2024",
+                "message": "JavaScript memperkenalkan saya untuk membuat interaksi dinamis di halaman web, menjadikan aplikasi lebih hidup dan interaktif."
+            },
+            "java": {
+                "date": "September 2024 - April 2025",
+                "message": "Java memberi pemahaman mendalam tentang konsep OOP seperti inheritance, polymorphism, dan encapsulation. Saya kini lebih percaya diri membuat aplikasi berbasis objek."
+            },
+            "php": {
+                "date": "Semester 3 perkuliahan",
+                "message": "Melalui PHP, saya memahami pengembangan web backend, termasuk manajemen data dan integrasi database dengan antarmuka berbasis HTML."
+            },
+            "cpp": {
+                "date": "Semester 1 sampai 3",
+                "message": "Mempelajari C++ dari dasar — mulai dari algoritma fundamental hingga OOP tingkat lanjut — yang memperkuat keterampilan pemrograman saya."
+            },
+            "react": {
+                "date": "Mei 2025 - September 2025",
+                "message": "React memperkenalkan saya pada arsitektur berbasis komponen dan manajemen state. Saya suka bagaimana React membuat pengembangan UI lebih terstruktur dan efisien."
+            },
+            "tailwind": {
+                "date": "Mei 2025 - September 2025",
+                "message": "Tailwind memudahkan saya membuat desain web responsif dan konsisten tanpa harus menulis banyak CSS secara manual."
+            }
+        }
+    },
+    "projects": {
+        "title": "Proyek Saya",
+        "list": {
+            "c": {
+                "title": "Bahasa C | Nail Art Ayunda",
+                "desc": "Program kasir sederhana berbasis C yang berjalan di CMD, menampilkan daftar layanan nail art, memproses pembayaran, dan otomatis mencetak struk transaksi."
+            },
+            "java1": {
+                "title": "Java Fundamental | PureFresh Laundry",
+                "desc": "Aplikasi web dengan fitur CRUD menggunakan Java, Spring Boot, dan Thymeleaf untuk manajemen data pengguna."
+            },
+            "html": {
+                "title": "Html + Css + JavaScript | Elysian Gamer",
+                "desc": "Proyek web yang menyediakan kumpulan game online gratis dengan grafis menarik, gameplay seru, dan akses mudah di browser."
+            },
+            "java2": {
+                "title": "Java API | HayMart REST APIs",
+                "desc": "HayMart adalah REST API berbasis Java untuk mengelola penjualan, inventaris produk, dan laporan penjualan, dibangun dengan Spring Boot dan MySQL."
+            },
+            "php": {
+                "title": "Php | Koperasi simpan pinjam",
+                "desc": "Aplikasi web berbasis PHP dan MySQL untuk mengelola koperasi, termasuk admin, anggota, tabungan, pinjaman, dan angsuran."
+            },
+            "react": {
+                "title": "React | Skintizen",
+                "desc": "Aplikasi front-end di mana pengguna dapat melihat dan memesan produk Skintific. Dibuat dengan React dan Tailwind CSS, dengan data tersimpan di local storage."
+            }
+        }
+    },
+    "about": {
+        "left": {
+            "title": "Saya membangun\n& merancang karier saya",
+            "desc": "Lihat CV/RESUME saya untuk mengetahui lebih lanjut tentang pengalaman dan keterampilan saya.",
+            "button": "LIHAT RESUME"
+        },
+        "right": {
+            "title": "Ingin ngobrol?\nCukup kirim pesan",
+            "desc": "Saya terbuka untuk diskusi, kolaborasi, atau sekadar menyapa.",
+            "button": "KIRIM PESAN"
+        }
+    },
+    "footer": {
+    "sayHello": "SAPA SAYA",
+    "email": "putriayundagustiara@gmail.com",
+    "menu": {
+      "home": "Beranda Saya",
+      "toolbox": "Teknologi Saya",
+      "toolboxProject": "Teknologi & Proyek Saya",
+      "projects": "Proyek Saya",
+      "resume": "Resume Saya"
+    },
+    "portfolio": "Portofolio Saya 2025"
+  },
+  "contact": {
+    "title": "Kirim Pesanmu!",
+    "desc": "Punya pertanyaan, ide kolaborasi, atau sekadar ingin menyapa? Silakan isi form di bawah ini.",
+    "name": "Nama Kamu",
+    "namePlaceholder": "Masukkan nama kamu",
+    "email": "Email Kamu",
+    "emailPlaceholder": "Masukkan email kamu",
+    "message": "Pesan",
+    "messagePlaceholder": "Tulis pesanmu di sini...",
+    "send": "KIRIM",
+    "sending": "MENGIRIM...",
+    "success": "Pesanmu berhasil terkirim!",
+    "error": {
+      "empty": "Harap isi semua kolom sebelum mengirim!",
+      "failed": "Pesan gagal dikirim. Silakan coba lagi."
+    }
+  },
+  "resumes": {
+    "profile": {
+      "title": "Profil",
+      "desc": "Mahasiswa D3 Manajemen Informatika dengan keahlian pada pemrograman Java, mencakup penerapan OOP, pembuatan REST API, dan pengembangan aplikasi menggunakan Spring Boot. Terbiasa menggunakan SQL untuk pengelolaan basis data serta mengembangkan aplikasi web dengan JavaScript, React.js, Tailwind, dan HTML di sisi frontend. Memiliki pemahaman dasar bahasa C untuk logika pemrograman, serta pengalaman sebagai Asisten Dosen dalam mendukung kegiatan akademik."
+    },
+    "education": {
+      "title": "Pendidikan",
+      "university": "Universitas Nasional Pasim Bandung – D3 Manajemen Informatika",
+      "gpa": "IPK: 3.77",
+      "period": "2023 – Sekarang",
+      "school": "MA Al-Fajar Kalapadua – IPS",
+      "avg": "Nilai Rata-rata: 88.0",
+      "graduated": "Lulus 2023"
+    },
+    "experience": {
+      "title": "Pengalaman",
+      "assistant": "Asisten Dosen – Universitas Nasional Pasim (Mei 2025 – Sekarang)",
+      "desc": "Mendukung kegiatan akademik dan pembelajaran, termasuk membantu penyusunan materi dan mendukung kelancaran perkuliahan."
+    },
+    "training": {
+      "title": "Pelatihan & Kursus",
+      "list": [
+        "Pelatihan Logika dan Algoritma Pemrogramman C – 2023",
+        "Pelatihan Pemrogramman Web dengan HTML, CSS dan JavaScript – 2024",
+        "Pelatihan Pemrogramman Java Fundamental (Spring Boot & MySQL) – 2024",
+        "Pelatihan Pemrograman Java Lanjutan (Spring Framework & Database) – 2025",
+        "Pelatihan Pengembangan Aplikasi Web dengan React & Tailwind – 2025"
+      ]
+    },
+    "skills": {
+      "title": "Keahlian",
+      "list": [
+        "Bahasa Pemrograman: Java (REST API), JavaScript, C, HTML",
+        "Framework & Library: Spring Boot, React.js, Tailwind CSS",
+        "Database: SQL (MySQL)",
+        "Tools: Git, GitHub, Visual Studio Code"
+      ]
+    },
+    "languages": {
+      "title": "Bahasa",
+      "list": [
+        "Bahasa Indonesia – Aktif",
+        "Bahasa Inggris – Dasar (mampu membaca dokumentasi pemrograman)"
+      ]
+    }
+  }
+}

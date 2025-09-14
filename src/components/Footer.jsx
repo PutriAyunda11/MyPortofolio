@@ -2,15 +2,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { scroller } from "react-scroll";
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "motion/react";
+import { useTranslation } from "react-i18next";
+
+const _motionDiv = motion.div;
 
 export default function Footer() {
+  const { t } = useTranslation();
   const [isLaptop, setIsLaptop] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLaptop(window.innerWidth >= 1024); // ≥1024px dianggap laptop/desktop
+      setIsLaptop(window.innerWidth >= 1024);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -35,18 +39,17 @@ export default function Footer() {
     }
   };
 
-  // Atur menu berdasarkan ukuran layar
   const menuItems = isLaptop
     ? [
-        { label: "My Home", section: "home" },
-        { label: "My ToolBox & My Project", section: "toolbox" },
-        { label: "My Résumé", section: "resume" },
+        { label: t("footer.menu.home"), section: "home" },
+        { label: t("footer.menu.toolboxProject"), section: "toolbox" },
+        { label: t("footer.menu.resume"), section: "resume" },
       ]
     : [
-        { label: "My Home", section: "home" },
-        { label: "My ToolBox", section: "toolbox" },
-        { label: "My Projects", section: "projects" },
-        { label: "My Résumé", section: "resume" },
+        { label: t("footer.menu.home"), section: "home" },
+        { label: t("footer.menu.toolbox"), section: "toolbox" },
+        { label: t("footer.menu.projects"), section: "projects" },
+        { label: t("footer.menu.resume"), section: "resume" },
       ];
 
   return (
@@ -69,15 +72,17 @@ export default function Footer() {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
-            {/* Kiri */}
+            {/* Left */}
             <div>
               <div className="mb-6">
-                <h4 className="text-sm tracking-widest mb-2">SAY HELLO</h4>
+                <h4 className="text-sm tracking-widest mb-2">
+                  {t("footer.sayHello")}
+                </h4>
                 <a
-                  href="mailto:putriayundagustiara@gmail.com"
+                  href={`mailto:${t("footer.email")}`}
                   className="text-lg font-medium hover:text-white"
                 >
-                  putriayundagustiara@gmail.com
+                  {t("footer.email")}
                 </a>
                 <br />
                 <a
@@ -89,7 +94,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Kanan */}
+            {/* Right */}
             <div className="flex flex-col gap-3 sm:items-end">
               {menuItems.map((item, idx) => (
                 <motion.button
@@ -117,7 +122,7 @@ export default function Footer() {
           <div className="border-t border-[#C0E57C]/50 my-6"></div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
-            <p className="text-sm">&copy; My Portofolio 2025</p>
+            <p className="text-sm">&copy; {t("footer.portfolio")}</p>
             <div className="flex gap-6 text-15px font-medium">
               <a href="https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08" className="hover:text-white" target="_blank" rel="noopener noreferrer">
                 X

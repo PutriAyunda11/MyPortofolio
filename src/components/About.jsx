@@ -2,8 +2,12 @@ import { ArrowRight } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+const _motionDiv = motion.div;
 
 export default function About() {
+  const { t } = useTranslation();
   const leftRef = useRef(null);
   const rightRef = useRef(null);
 
@@ -23,7 +27,7 @@ export default function About() {
     setTimeout(() => {
       navigate(to);
       setAnimatingButton(null);
-    }, 700); // sesuai durasi transition
+    }, 700);
   };
 
   return (
@@ -46,10 +50,9 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={leftInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold sm:font-extrabold text-[#4b22d1] leading-tight mb-4"
+            className="text-3xl sm:text-4xl font-bold sm:font-extrabold text-[#4b22d1] leading-tight mb-4 whitespace-pre-line"
           >
-            I build
-            <br />& design my career
+            {t("about.left.title")}
           </motion.h2>
 
           <motion.p
@@ -58,7 +61,7 @@ export default function About() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             className="text-gray-700 text-lg"
           >
-            View my CV/RESUME to learn more about my experience and skills.
+            {t("about.left.desc")}
           </motion.p>
 
           <div className="mt-10">
@@ -72,7 +75,7 @@ export default function About() {
                 }
               `}
             >
-              <span className="relative z-10">SEE RESUME</span>
+              <span className="relative z-10">{t("about.left.button")}</span>
               <ArrowRight className="relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
               <span
                 className={`absolute inset-0 bg-[#4b22d1] transition-all duration-700 z-0
@@ -103,10 +106,9 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={rightInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold sm:font-extrabold text-[#4b22d1] leading-tight mb-4"
+            className="text-3xl sm:text-4xl font-bold sm:font-extrabold text-[#4b22d1] leading-tight mb-4 whitespace-pre-line"
           >
-            Want to chat?
-            <br /> Just send a message
+            {t("about.right.title")}
           </motion.h2>
 
           <motion.p
@@ -115,7 +117,7 @@ export default function About() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             className="text-gray-700 text-lg"
           >
-            I’m open to discussions, collaborations, or just saying hello.
+            {t("about.right.desc")}
           </motion.p>
 
           <div className="mt-10">
@@ -129,7 +131,7 @@ export default function About() {
                 }
               `}
             >
-              <span className="relative z-10">SEND MESSAGE</span>
+              <span className="relative z-10">{t("about.right.button")}</span>
               <ArrowRight className="relative z-10 w-[18px] h-[18px] sm:w-[30px] sm:h-[30px]" />
               <span
                 className={`absolute inset-0 bg-[#4b22d1] transition-all duration-700 z-0
