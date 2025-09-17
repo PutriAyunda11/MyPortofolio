@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link as ScrollLink, scroller } from "react-scroll";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Globe } from "lucide-react";
+import { Globe, Twitter, Github, Linkedin, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const _motionDiv = motion.div;
@@ -36,6 +36,13 @@ export default function Header() {
           delay: 0,
           smooth: "easeInOutQuart",
           offset: offsetValue,
+        });
+      } else if (section === "aboutme") {
+        scroller.scrollTo("aboutme", {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          offset: 0,
         });
       } else if (section === "toolbox") {
         scroller.scrollTo("toolbox", {
@@ -77,13 +84,14 @@ export default function Header() {
   const menuItems = isLaptop
     ? [
         { label: t("home"), section: "home" },
+        { label: t("aboutme"), section: "aboutme" },
         { label: t("toolboxs"), section: "toolbox" },
         { label: t("resume"), section: "resume" },
       ]
     : [
         { label: t("home"), section: "home" },
-        { label: t("toolbox"), section: "toolbox" },
-        { label: t("project"), section: "projects" },
+        { label: t("aboutme"), section: "aboutme" },
+        { label: t("toolboxs"), section: "toolbox" },
         { label: t("resume"), section: "resume" },
       ];
 
@@ -93,7 +101,7 @@ export default function Header() {
     i18n.changeLanguage(newLang);
   };
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+    <header className="fixed md:backdrop-blur-[400px] top-0 left-0 w-full z-50">
       <div className="flex items-center justify-between px-6 py-6 md:px-10">
         <div
           className="text-blue-500 text-lg md:text-2xl font-bold tracking-wide hover:text-blue-400 cursor-pointer"
@@ -105,9 +113,9 @@ export default function Header() {
           onClick={() => setMenuOpen(true)}
           className="flex flex-col gap-1 md:gap-2 cursor-pointer"
         >
-          <span className="w-10 h-0.5 bg-blue-300 md:bg-purple-900 "></span>
-          <span className="w-8 h-0.5 bg-blue-300 md:bg-purple-900"></span>
-          <span className="w-4 h-0.5 bg-blue-300 md:bg-purple-900"></span>
+          <span className="w-15 h-1 bg-blue-200 md:bg-blue-300 "></span>
+          <span className="w-10 h-1 bg-blue-200 md:bg-blue-300"></span>
+          <span className="w-6 h-1 bg-blue-200 md:bg-blue-300"></span>
         </button>
       </div>
 
@@ -208,8 +216,8 @@ export default function Header() {
                   className="flex items-center gap-0.5 cursor-pointer select-none"
                   onClick={toggleLanguage}
                 >
-                  <Globe size={22} className="text-purple-800" />
-                  <span className="text-sm font-semibold text-purple-800">
+                  <Globe size={26} className="text-purple-800" />
+                  <span className="text-[12px] font-semibold text-purple-800">
                     {language.toUpperCase()}
                   </span>
                 </div>
@@ -217,33 +225,33 @@ export default function Header() {
                   href="https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold"
+                  className="font-semibold text-purple-800 hover:text-purple-500 pt-2"
                 >
-                  X
+                  <Twitter size={18} />
                 </a>
                 <a
                   href="https://github.com/PutriAyunda11"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold"
+                  className="font-semibold text-purple-800 hover:text-purple-500 pt-2"
                 >
-                  GH
+                  <Github size={18} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold"
+                  className="font-semibold text-purple-800 hover:text-purple-500 pt-2"
                 >
-                  LN
+                  <Linkedin size={18} />
                 </a>
                 <a
                   href="https://www.instagram.com/pppp_yyygstrr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold"
+                  className="font-semibold text-purple-800 hover:text-purple-500 pt-2"
                 >
-                  IG
+                  <Instagram size={18} />
                 </a>
               </div>
             </motion.div>

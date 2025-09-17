@@ -1,113 +1,160 @@
 {
-    "mainTitle": "Portofolio Saya",
-    "home": "Beranda",
-    "toolboxs": "Teknologi & Proyek",
-    "toolbox": "Teknologi",
-    "project": "Proyek",
-    "resume": "Resume",
-    "sayHello": "Sapa Saya",
-    "email": "putriayundagustiara@gmail.com",
-    "homeSection": {
-        "title": "Dari Konsep ke Kode.",
-        "description": "Saya senang mengubah ide menjadi kenyataan dengan terlibat di setiap lapisan proyek, mulai dari membangun logika yang solid, merancang antarmuka yang intuitif, hingga mengelola data secara terstruktur. Saya percaya aplikasi yang hebat adalah perpaduan antara fungsi yang kuat dan pengalaman pengguna yang mulus."
+  "mainTitle": "putriAG",
+  "home": "Beranda",
+  "aboutme":"Tentang saya",
+  "toolboxs": "Portofolio",
+  "project": "Proyek",
+  "resume": "Resume",
+  "sayHello": "Sapa Saya",
+  "email": "putriayundagustiara@gmail.com",
+  "homeSection": {
+    "title": "Dari Konsep ke Kode.",
+    "description": "Saya senang mengubah ide menjadi kenyataan dengan terlibat di setiap lapisan proyek, mulai dari membangun logika yang solid, merancang antarmuka yang intuitif, hingga mengelola data secara terstruktur. Saya percaya aplikasi yang hebat adalah perpaduan antara fungsi yang kuat dan pengalaman pengguna yang mulus.",
+    "me": "Tentang saya",
+    "chat": "Kirim Pesan"
+  },
+  "portfolio": {
+    "title": "Pameran Portofolio",
+    "desc": "Jelajahi perjalanan saya melalui proyek, sertifikat, dan keahlian teknis. Setiap bagian merepresentasikan tonggak dalam perjalanan belajar saya yang berkelanjutan."
+  },
+  "aboutmee": {
+    "title": "Tentang Saya",
+    "name": "Putri Ayunda Gustiara",
+    "description": "Saya adalah seorang Web Developer dengan pengalaman kuat dalam membangun REST API menggunakan Java & Spring Boot. Selain backend, saya juga bekerja pada frontend development menggunakan React.js, HTML, CSS, dan JavaScript. Saat ini, saya merupakan mahasiswa D3 Manajemen Informatika di Universitas Nasional Pasim Bandung. Tujuan utama saya adalah menciptakan aplikasi yang efisien, scalable, dan user-friendly untuk memecahkan masalah nyata sekaligus terus belajar dan berkembang sebagai developer.",
+    "years": "Tahun Belajar sebagai Developer",
+    "projects": "Proyek Selesai",
+    "skillsTitle": "Keahlian Teknis",
+    "skills": [
+      "Java & Spring Boot (REST API Development)",
+      "Desain & Manajemen Database MySQL",
+      "React.js & Frontend Modern",
+      "HTML, CSS, JavaScript (Responsive UI)",
+      "Version Control dengan Git & GitHub",
+      "Problem Solving & Prinsip Clean Code"
+    ]
+  },
+  "certificates": {
+    "title": "Sertifikat",
+    "list": {
+      "cLogic": "Pelatihan Logika dan Algoritma  Bahasa C",
+      "dataStructure": "Pelatihan Struktur Data",
+      "database": "Pelatihan Database",
+      "webProgramming": "Pelatihan Pemrograman Web ",
+      "fundamentalJava": "Pelatihan Fundamental Back-End Java",
+      "advancedJava": "Pelatihan Advanced Back-End Java",
+      "frontendReact": "Pelatihan Fundamental Front-End (React)",
+      "github": "Pelatihan GitHub"
+    }
+  },
+  "tabs": {
+    "projects": "Proyek",
+    "certificates": "Sertifikat",
+    "tech": "Teknologi"
+  },
+  "projects": {
+    "title": "Proyek Saya",
+    "list": {
+      "c": {
+        "title": "C Language | Nail Art Ayunda",
+        "descShort": "Program kasir berbasis C di CMD untuk menampilkan layanan, memproses pembayaran, dan mencetak struk.",
+        "descLong": "Aplikasi kasir berbasis command-line yang dibuat dengan bahasa C untuk membantu pencatatan layanan nail art. Aplikasi ini mampu menampilkan daftar layanan, menghitung total transaksi, melakukan validasi input sederhana, dan mencetak struk pembayaran secara otomatis.",
+        "date": "Januari 2024",
+        "features": [
+          "Admin juga berperan sebagai user",
+          "Menampilkan daftar layanan nail art",
+          "Input dan validasi pesanan pelanggan",
+          "Perhitungan total otomatis",
+          "Cetak struk transaksi"
+        ]
+      },
+      "java1": {
+        "title": "Java Fundamental | PureFresh Laundry",
+        "descShort": "Aplikasi web dengan fitur CRUD menggunakan Java Spring Boot dan Thymeleaf.",
+        "descLong": "Sistem manajemen laundry berbasis web menggunakan Java Spring Boot dan Thymeleaf. Aplikasi ini memungkinkan admin dan petugas untuk mengelola data pelanggan, pesanan, serta laporan transaksi. Dibangun untuk melatih konsep CRUD dasar dengan tampilan yang bersih.",
+        "date": "Desember 2024",
+        "features": [
+          "Registrasi pelanggan dan manajemen pesanan",
+          "CRUD untuk layanan laundry",
+          "Pembuatan laporan transaksi",
+          "UI responsif berbasis Thymeleaf"
+        ]
+      },
+      "html": {
+        "title": "Html + Css + JavaScript | Elysian Gamer",
+        "descShort": "Website permainan online gratis dengan tampilan menarik dan akses mudah.",
+        "descLong": "Portal permainan berbasis web yang dibangun menggunakan HTML, CSS, dan JavaScript. Menyediakan game gratis dengan grafis sederhana namun menarik, serta gameplay interaktif. Website ini juga dioptimalkan agar cepat diakses dan responsif di berbagai perangkat.",
+        "date": "Juli 2024",
+        "features": [
+          "Mengambil data game dari API eksternal",
+          "Pencarian dan filter game",
+          "Animasi interaktif",
+          "Desain responsif",
+          "Halaman ringan dan cepat dimuat"
+        ]
+      },
+      "java2": {
+        "title": "Java API | HayMart REST APIs",
+        "descShort": "REST API untuk manajemen penjualan, inventori, dan laporan menggunakan Spring Boot + MySQL.",
+        "descLong": "RESTful API yang mendukung sistem HayMart untuk mengelola penjualan, produk, dan laporan keuangan. Dibangun dengan Spring Boot serta terintegrasi dengan MySQL, API ini dirancang untuk mendukung skala besar dan pengelolaan data yang stabil.",
+        "date": "April 2025",
+        "features": [
+          "Login JWT & manajemen password (OTP via email)",
+          "Email notifikasi dengan template",
+          "CRUD & laporan penjualan (Excel/PDF)",
+          "Filter, pagination, sorting data",
+          "Scheduler & upload file",
+          "Integrasi MySQL"
+        ]
+      },
+      "php": {
+        "title": "Php | Koperasi Simpan Pinjam",
+        "descShort": "Aplikasi web PHP-MySQL untuk manajemen koperasi: anggota, simpanan, dan pinjaman.",
+        "descLong": "Aplikasi manajemen koperasi yang dikembangkan menggunakan PHP dan MySQL. Sistem ini membantu koperasi dalam mencatat data anggota, simpanan, pinjaman, serta jadwal pembayaran. Dibuat agar proses keuangan lebih transparan dan mudah dipantau.",
+        "date": "Januari 2025",
+        "features": [
+          "Pemilik default (admin utama) dengan kontrol penuh",
+          "CRUD data admin, anggota, simpanan, pinjaman, dan angsuran",
+          "Peran admin terbatas (hanya bisa kelola anggota, simpanan, pinjaman, dan angsuran, tetapi tidak bisa kelola admin lain)",
+          "Pencatatan pembayaran dan penjadwalan angsuran",
+          "Dashboard terpusat untuk memantau aktivitas koperasi"
+        ]
+      },
+      "react": {
+        "title": "React | Skintizen",
+        "descShort": "Aplikasi frontend untuk menelusuri dan memesan produk Skintific, dibangun dengan React + Tailwind.",
+        "descLong": "Aplikasi e-commerce modern yang dibangun menggunakan React dan Tailwind CSS. Pengguna dapat menelusuri katalog produk skincare, menambahkan barang ke keranjang, serta melakukan pemesanan. Fokus pada pengalaman pengguna yang mulus dengan komponen React yang reusable.",
+        "date": "Agustus 2025",
+        "features": [
+          "Menampilkan katalog produk",
+          "Fitur keranjang belanja",
+          "Desain responsif dengan Tailwind",
+          "Proses checkout yang sederhana"
+        ]
+      }
+    }
+  },
+  "about": {
+    "left": {
+      "title": "Saya membangun\n& merancang karier saya",
+      "desc": "Lihat CV/RESUME saya untuk mengetahui lebih lanjut tentang pengalaman dan keterampilan saya.",
+      "button": "LIHAT RESUME"
     },
-    "tech": {
-        "title": "Teknologi",
-        "tools": {
-            "c": {
-                "date": "September 2023 - Januari 2024",
-                "message": "Belajar bahasa C memberi dasar yang kuat untuk memahami logika pemrograman dasar dan struktur data. Walau awalnya cukup menantang, saya merasa puas karena sekarang lebih mudah mempelajari bahasa lain."
-            },
-            "sql": {
-                "date": "Januari 2024 - Mei 2024",
-                "message": "Dengan SQL, saya belajar bagaimana mengelola dan mengambil data dari database secara efisien. Pengalaman ini sangat bermanfaat untuk proyek backend yang saya kembangkan."
-            },
-            "html": {
-                "date": "Juni 2024 - Agustus 2024",
-                "message": "HTML adalah perkenalan saya ke dunia web. Melalui HTML, saya belajar menyusun halaman dengan rapi dan semantik."
-            },
-            "css": {
-                "date": "Juni 2024 - Agustus 2024",
-                "message": "CSS membantu saya memperindah tampilan halaman web dan membuatnya lebih menarik."
-            },
-            "js": {
-                "date": "Juni 2024 - Agustus 2024",
-                "message": "JavaScript memperkenalkan saya untuk membuat interaksi dinamis di halaman web, menjadikan aplikasi lebih hidup dan interaktif."
-            },
-            "java": {
-                "date": "September 2024 - April 2025",
-                "message": "Java memberi pemahaman mendalam tentang konsep OOP seperti inheritance, polymorphism, dan encapsulation. Saya kini lebih percaya diri membuat aplikasi berbasis objek."
-            },
-            "php": {
-                "date": "Semester 3 perkuliahan",
-                "message": "Melalui PHP, saya memahami pengembangan web backend, termasuk manajemen data dan integrasi database dengan antarmuka berbasis HTML."
-            },
-            "cpp": {
-                "date": "Semester 1 sampai 3",
-                "message": "Mempelajari C++ dari dasar — mulai dari algoritma fundamental hingga OOP tingkat lanjut — yang memperkuat keterampilan pemrograman saya."
-            },
-            "react": {
-                "date": "Mei 2025 - September 2025",
-                "message": "React memperkenalkan saya pada arsitektur berbasis komponen dan manajemen state. Saya suka bagaimana React membuat pengembangan UI lebih terstruktur dan efisien."
-            },
-            "tailwind": {
-                "date": "Mei 2025 - September 2025",
-                "message": "Tailwind memudahkan saya membuat desain web responsif dan konsisten tanpa harus menulis banyak CSS secara manual."
-            }
-        }
-    },
-    "projects": {
-        "title": "Proyek Saya",
-        "list": {
-            "c": {
-                "title": "Bahasa C | Nail Art Ayunda",
-                "desc": "Program kasir sederhana berbasis C yang berjalan di CMD, menampilkan daftar layanan nail art, memproses pembayaran, dan otomatis mencetak struk transaksi."
-            },
-            "java1": {
-                "title": "Java Fundamental | PureFresh Laundry",
-                "desc": "Aplikasi web dengan fitur CRUD menggunakan Java, Spring Boot, dan Thymeleaf untuk manajemen data pengguna."
-            },
-            "html": {
-                "title": "Html + Css + JavaScript | Elysian Gamer",
-                "desc": "Proyek web yang menyediakan kumpulan game online gratis dengan grafis menarik, gameplay seru, dan akses mudah di browser."
-            },
-            "java2": {
-                "title": "Java API | HayMart REST APIs",
-                "desc": "HayMart adalah REST API berbasis Java untuk mengelola penjualan, inventaris produk, dan laporan penjualan, dibangun dengan Spring Boot dan MySQL."
-            },
-            "php": {
-                "title": "Php | Koperasi simpan pinjam",
-                "desc": "Aplikasi web berbasis PHP dan MySQL untuk mengelola koperasi, termasuk admin, anggota, tabungan, pinjaman, dan angsuran."
-            },
-            "react": {
-                "title": "React | Skintizen",
-                "desc": "Aplikasi front-end di mana pengguna dapat melihat dan memesan produk Skintific. Dibuat dengan React dan Tailwind CSS, dengan data tersimpan di local storage."
-            }
-        }
-    },
-    "about": {
-        "left": {
-            "title": "Saya membangun\n& merancang karier saya",
-            "desc": "Lihat CV/RESUME saya untuk mengetahui lebih lanjut tentang pengalaman dan keterampilan saya.",
-            "button": "LIHAT RESUME"
-        },
-        "right": {
-            "title": "Ingin ngobrol?\nCukup kirim pesan",
-            "desc": "Saya terbuka untuk diskusi, kolaborasi, atau sekadar menyapa.",
-            "button": "KIRIM PESAN"
-        }
-    },
-    "footer": {
+    "right": {
+      "title": "Ingin ngobrol?\nCukup kirim pesan",
+      "desc": "Saya terbuka untuk diskusi, kolaborasi, atau sekadar menyapa.",
+      "button": "KIRIM PESAN"
+    }
+  },
+  "footer": {
     "sayHello": "SAPA SAYA",
     "email": "putriayundagustiara@gmail.com",
     "menu": {
       "home": "Beranda Saya",
-      "toolbox": "Teknologi Saya",
-      "toolboxProject": "Teknologi & Proyek Saya",
+      "toolboxs": "Portofolio Saya",
       "projects": "Proyek Saya",
       "resume": "Resume Saya"
     },
-    "portfolio": "Portofolio Saya 2025"
+    "portfolio": "putriAG 2025"
   },
   "contact": {
     "title": "Kirim Pesanmu!",
@@ -125,6 +172,13 @@
       "empty": "Harap isi semua kolom sebelum mengirim!",
       "failed": "Pesan gagal dikirim. Silakan coba lagi."
     }
+  },
+  "stats": {
+    "totalTech": "Total Teknologi",
+    "mainFeatures": "Fitur Utama",
+    "back": " Kembali",
+    "tg": "Teknologi yang digunakan",
+    "keyy": "Fitur Utama"
   },
   "resumes": {
     "profile": {

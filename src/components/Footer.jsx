@@ -3,6 +3,8 @@ import { scroller } from "react-scroll";
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { Twitter, Github, Linkedin, Instagram } from "lucide-react";
+
 
 const _motionDiv = motion.div;
 
@@ -42,18 +44,17 @@ export default function Footer() {
   const menuItems = isLaptop
     ? [
         { label: t("footer.menu.home"), section: "home" },
-        { label: t("footer.menu.toolboxProject"), section: "toolbox" },
+        { label: t("footer.menu.toolboxs"), section: "toolbox" },
         { label: t("footer.menu.resume"), section: "resume" },
       ]
     : [
         { label: t("footer.menu.home"), section: "home" },
-        { label: t("footer.menu.toolbox"), section: "toolbox" },
-        { label: t("footer.menu.projects"), section: "projects" },
+        { label: t("footer.menu.toolboxs"), section: "toolbox" },
         { label: t("footer.menu.resume"), section: "resume" },
       ];
 
   return (
-    <footer className="bg-[#2F2FA2] text-[#C0E57C] px-6 sm:px-10 md:px-16 py-16">
+    <footer className="bg-[#292983] text-[#C0E57C] px-6 sm:px-10 md:px-16 py-16">
       <motion.div
         ref={footerRef}
         initial={{ y: 50, opacity: 0 }}
@@ -125,16 +126,16 @@ export default function Footer() {
             <p className="text-sm">&copy; {t("footer.portfolio")}</p>
             <div className="flex gap-6 text-15px font-medium">
               <a href="https://x.com/Ayundaa1489269?t=c7Hj1DocFpk2PTsP8n8cwQ&s=08" className="hover:text-white" target="_blank" rel="noopener noreferrer">
-                X
+                <Twitter size={18} />
               </a>
               <a href="https://github.com/PutriAyunda11" className="hover:text-white" target="_blank" rel="noopener noreferrer">
-                GH
+                <Github size={18} />
               </a>
               <a href="https://www.linkedin.com/in/putri-ayunda-gustiara-1aa690331" className="hover:text-white" target="_blank" rel="noopener noreferrer">
-                LN
+                <Linkedin size={18} />
               </a>
               <a href="https://www.instagram.com/pppp_yyygstrr/" className="hover:text-white" target="_blank" rel="noopener noreferrer">
-                IG
+                <Instagram size={18} />
               </a>
             </div>
           </div>

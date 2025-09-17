@@ -10,6 +10,8 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import Message from "./components/Message";
 import Resume from "./components/Resume";
+import Details from "./components/Details";
+import AboutMe from "./components/Aboutme";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -43,21 +45,28 @@ function MainPage() {
       <Element
         name="home"
         data-section="home"
-        className="min-h-screen flex items-center justify-center bg-gradient-to-b md:bg-gradient-to-r from-[#2F2FA2] to-[#A1FFCE] px-4 py-10"
+        className="min-h-screen flex items-center justify-center bg-[#2F2FA2] px-4 py-10"
       >
         <Home />
       </Element>
       <Element
+        name="aboutme"
+        data-section="aboutme"
+        className="min-h-screen flex items-center justify-center bg-gradient-to-b md:bg-gradient-to-r from-[#2F2FA2] to-[#A1FFCE] "
+      >
+        <AboutMe />
+      </Element>
+      <Element
         name="toolbox"
         data-section="toolbox"
-        className="min-h-screen flex items-center justify-center bg-gradient-to-b md:bg-gradient-to-r from-[#A1FFCE] to-[#2F2FA2] px-4 py-10"
+        className="min-h-screen justify-center bg-gradient-to-b md:bg-gradient-to-r from-[#A1FFCE] to-[#2F2FA2] "
       >
         <Tech />
       </Element>
       <Element
         name="resume"
         data-section="resume"
-        className="min-h-screen bg-gradient-to-b md:bg-gradient-to-r from-[#2F2FA2] to-[#A1FFCE] flex items-center justify-center px-0 sm:px-6 md:px-5 py-6"
+        className="min-h-screen bg-[#2F2FA2] flex items-center justify-center px-0 sm:px-6 md:px-5 py-6"
       >
         <About />
       </Element>
@@ -71,6 +80,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/aboutme" element={<MainPage />} />
         <Route path="/toolbox" element={<MainPage />} />
         <Route path="/resume" element={<MainPage />} />
         <Route
@@ -94,6 +104,7 @@ export default function App() {
             </>
           }
         />
+        <Route path="/detail" element={<Details />} />
       </Routes>
     </BrowserRouter>
   );

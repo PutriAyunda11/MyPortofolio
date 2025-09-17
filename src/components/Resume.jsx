@@ -45,7 +45,7 @@ export default function Resume() {
   const borderColor = "#0b3d91";
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10 text-gray-800">
+    <section className="max-w-7xl mx-auto px-4 py-16 text-gray-800">
       <div ref={resumeRef} className="bg-white p-6">
         {/* Header */}
         <div className="text-center mb-8">
