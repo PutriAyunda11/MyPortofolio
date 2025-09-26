@@ -18,6 +18,16 @@ import pPhp from "../assets/projectPhp.png";
 import pReact from "../assets/projectReact.png";
 import certifC1 from "../assets/certifCourse1.png";
 import certifC2 from "../assets/certifCourse2.png";
+import certifC3 from "../assets/course3.png";
+import code from "../assets/code.png";
+import database from "../assets/database.jpg";
+import gitHub from "../assets/gitHub.jpg";
+import javaF from "../assets/javaFundamental.jpg";
+import javaL from "../assets/javaLanjutan.jpg";
+import logika from "../assets/logikaAlgoritmaC.jpg";
+import react from "../assets/react.jpg";
+import struktur from "../assets/strukturData.jpg";
+import web from "../assets/web.jpg";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState, useRef } from "react";
@@ -84,6 +94,38 @@ export default function Tech() {
 
   const certificates = [
     {
+      name: "database",
+      image: database,
+    },
+    {
+      name: "webProgramming",
+      image: web,
+    },
+    {
+      name: "fundamentalJava",
+      image: javaF,
+    },
+    {
+      name: "advancedJava",
+      image: javaL,
+    },
+    {
+      name: "frontendReact",
+      image: react,
+    },
+    {
+      name: "github",
+      image: gitHub,
+    },
+    {
+      name: "strukture Data",
+      image: struktur,
+    },
+    {
+      name: "logika algoritma C",
+      image: logika,
+    },
+        {
       name: "Bootcamp Course 1",
       image: certifC1,
     },
@@ -91,30 +133,16 @@ export default function Tech() {
       name: "Bootcamp Course 2",
       image: certifC2,
     },
-    // {
-    //   name: "database",
-    //   image: pHtml,
-    // },
-    // {
-    //   name: "webProgramming",
-    //   image: pPhp,
-    // },
-    // {
-    //   name: "fundamentalJava",
-    //   image: pReact,
-    // },
-    // {
-    //   name: "advancedJava",
-    //   image: pJva,
-    // },
-    // {
-    //   name: "frontendReact",
-    //   image: pReact,
-    // },
-    // {
-    //   name: "github",
-    //   image: pHtml,
-    // },
+        {
+      name: "Bootcamp Code",
+      image: code,
+    },
+    {
+      name: "Bootcamp Course 3",
+      image: certifC3,
+    },
+
+
   ].map((cert) => ({
     ...cert,
     title: t(`certificates.list.${cert.name}`),
